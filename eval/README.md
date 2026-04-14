@@ -50,3 +50,20 @@ python eval/scripts/bootstrap_labels.py
 
 3. Open `eval/labels/candidate_labels.json` and fill the `expected` fields manually
 4. Run the evaluation script to generate `eval/summary.md`
+
+## Recommended Manual Label Set
+
+For a fast and defensible take-home evaluation, prioritize:
+
+- `garment_type`
+- `style`
+- `material`
+- `occasion`
+- `season`
+
+Suggested rules:
+
+- Leave uncertain fields blank instead of inventing a label
+- Use one canonical value per field
+- Keep `style` labels coarse rather than fashion-editorial or brand-specific
+- Treat `material` and `occasion` as softer fields when writing the final error analysis

@@ -13,12 +13,13 @@ test("upload, classify, and filter a library item", async ({ page }) => {
   await page.getByRole("button", { name: "Upload and classify" }).click();
 
   await expect(page.getByText("Upload complete. Placeholder AI metadata has been added.")).toBeVisible();
-  await expect(page.getByRole("heading", { name: "linen-shirt-test.svg" }).first()).toBeVisible();
+  await expect(page.getByRole("heading", { name: "linen shirt test" }).first()).toBeVisible();
+  await expect(page.getByText("linen-shirt-test.svg").first()).toBeVisible();
   await expect(page.getByText("top").first()).toBeVisible();
 
   await page.getByLabel("Search library").fill("linen");
   await page.getByRole("button", { name: "Search" }).click();
 
-  await expect(page.getByRole("heading", { name: "linen-shirt-test.svg" }).first()).toBeVisible();
+  await expect(page.getByRole("heading", { name: "linen shirt test" }).first()).toBeVisible();
   await expect(page.getByText(uniqueName).first()).toBeVisible();
 });

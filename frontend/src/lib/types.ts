@@ -17,12 +17,24 @@ export type ClassificationResult = {
 export type ImageListItem = {
   id: number;
   file_path: string;
+  image_url: string;
   original_filename: string;
   designer_name?: string | null;
   captured_at?: string | null;
   created_at: string;
   ai_metadata?: ClassificationResult | null;
   annotations: AnnotationItem[];
+};
+
+export type ImageUploadResponse = {
+  id: number;
+  file_path: string;
+  image_url: string;
+  original_filename: string;
+  designer_name?: string | null;
+  captured_at?: string | null;
+  created_at: string;
+  ai_metadata?: ClassificationResult | null;
 };
 
 export type AnnotationItem = {

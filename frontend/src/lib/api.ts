@@ -1,7 +1,8 @@
-import type { FilterGroup, ImageListItem } from "@/lib/types";
+import type { FilterGroup, ImageListItem, ImageUploadResponse } from "@/lib/types";
 
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://127.0.0.1:8000/api";
+const API_ORIGIN = API_BASE_URL.replace(/\/api$/, "");
 
 export async function fetchImages(): Promise<ImageListItem[]> {
   const response = await fetch(`${API_BASE_URL}/images`, {
@@ -58,7 +59,7 @@ export async function uploadImage(input: {
   file: File;
   designerName?: string;
   capturedAt?: string;
-}): Promise<ImageListItem> {
+}): Promise<ImageUploadResponse> {
   const formData = new FormData();
   formData.append("file", input.file);
 
@@ -108,3 +109,10 @@ export async function createAnnotation(input: {
 }
 
 export { API_BASE_URL };
+export function buildAssetUrl(assetPath: string): string {
+  if (assetPath.startsWith("http://") || assetPath.startsWith("https://")) {
+    return assetPath;
+  }
+
+  return `${API_ORIGIN}${assetPath}`;
+}

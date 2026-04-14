@@ -10,6 +10,7 @@ from app.schemas.classification import ClassificationResult
 class ImageUploadResponse(BaseModel):
     id: int
     file_path: str
+    image_url: str
     original_filename: str
     designer_name: Optional[str] = None
     captured_at: Optional[datetime] = None
@@ -20,6 +21,7 @@ class ImageUploadResponse(BaseModel):
 class ImageListItem(BaseModel):
     id: int
     file_path: str
+    image_url: str
     original_filename: str
     designer_name: Optional[str] = None
     captured_at: Optional[datetime] = None

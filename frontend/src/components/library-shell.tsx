@@ -2,7 +2,12 @@
 
 import { useState, useTransition } from "react";
 
-import { createAnnotation, fetchFilteredImages, uploadImage } from "@/lib/api";
+import {
+  buildAssetUrl,
+  createAnnotation,
+  fetchFilteredImages,
+  uploadImage,
+} from "@/lib/api";
 import type { FilterGroup, ImageListItem } from "@/lib/types";
 
 type Props = {
@@ -80,6 +85,24 @@ function getDesignerNote(image: ImageListItem): string {
   }
 
   return "Designer note capture will be added in the next iteration.";
+}
+
+function getDisplayTitle(filename: string): string {
+  const stem = filename.replace(/\.[^/.]+$/, "");
+  const cleaned = stem
+    .replace(/[_-]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (/^截屏\d+/i.test(cleaned) || /^screenshot/i.test(cleaned)) {
+    return "Captured field reference";
+  }
+
+  return cleaned || filename;
+}
+
+function getAiSummary(image: ImageListItem): string {
+  return image.ai_metadata?.description ?? "AI description will appear after classification.";
 }
 
 export function LibraryShell({ initialImages, hasBackendData, filterGroups }: Props) {
@@ -231,7 +254,9 @@ export function LibraryShell({ initialImages, hasBackendData, filterGroups }: Pr
           <div className="hero-stat">
             <span>Latest Capture</span>
             <strong>
-              {hasImages ? images[0]?.original_filename ?? "Awaiting upload" : "Tokyo utility denim study"}
+              {hasImages
+                ? getDisplayTitle(images[0]?.original_filename ?? "Awaiting upload")
+                : "Tokyo utility denim study"}
             </strong>
           </div>
         </div>
@@ -349,58 +374,83 @@ export function LibraryShell({ initialImages, hasBackendData, filterGroups }: Pr
           </p>
         </div>
 
-        {isUsingFallback ? <p className="library-banner">Backend not connected yet. Showing editorial sample content.</p> : null}
+        {isUsingFallback ? (
+          <p className="library-banner">
+            Backend not connected yet. Showing editorial sample content.
+          </p>
+        ) : null}
 
         <div className="look-grid">
           {hasImages
             ? images.map((image, index) => (
-                <article className="look-card" key={image.id}>
-                  <div className={`look-visual look-tone-${(index % 3) + 1}`}>
-                    <span>{getLocationLabel(image)}</span>
+                <article className="look-card look-card-live" key={image.id}>
+                  <div className="look-media">
+                    <img
+                      alt={getDisplayTitle(image.original_filename)}
+                      className="look-thumbnail"
+                      src={buildAssetUrl(image.image_url)}
+                    />
+                    <div className="look-media-overlay">
+                      <span>{getLocationLabel(image)}</span>
+                      <strong>{image.ai_metadata?.garment_type ?? "Unknown garment"}</strong>
+                    </div>
                   </div>
                   <div className="look-body">
                     <div className="look-heading">
-                      <h3>{image.original_filename}</h3>
-                      <p>{image.ai_metadata?.garment_type ?? "Unknown garment"}</p>
+                      <div>
+                        <h3>{getDisplayTitle(image.original_filename)}</h3>
+                        <p>{image.original_filename}</p>
+                      </div>
+                      <div className="look-chip-stack">
+                        <span className="look-chip">{getPaletteLabel(image)}</span>
+                        <span className="look-chip look-chip-accent">
+                          {image.ai_metadata?.season ?? "Season pending"}
+                        </span>
+                      </div>
                     </div>
-                    <dl className="look-meta">
-                      <div>
-                        <dt>Palette</dt>
-                        <dd>{getPaletteLabel(image)}</dd>
-                      </div>
-                      <div>
-                        <dt>AI Note</dt>
-                        <dd>
-                          {image.ai_metadata?.description ??
-                            "AI description will appear after classification."}
-                        </dd>
-                      </div>
-                      <div>
-                        <dt>Designer Note</dt>
-                        <dd>{getDesignerNote(image)}</dd>
-                      </div>
-                    </dl>
-                    <div className="annotation-composer">
-                      <textarea
-                        className="annotation-input"
-                        value={noteDrafts[image.id] ?? ""}
-                        onChange={(event) =>
-                          setNoteDrafts((current) => ({
-                            ...current,
-                            [image.id]: event.target.value,
-                          }))
-                        }
-                        placeholder="Add a designer observation or follow-up note"
-                        rows={3}
-                      />
-                      <button
-                        className="secondary-button annotation-button"
-                        type="button"
-                        onClick={() => handleAnnotationSubmit(image.id)}
-                        disabled={isPending}
-                      >
-                        Save note
-                      </button>
+
+                    <div className="insight-grid">
+                      <section className="insight-panel">
+                        <p className="panel-kicker">AI Metadata</p>
+                        <p className="panel-copy">{getAiSummary(image)}</p>
+                        <dl className="look-meta">
+                          <div>
+                            <dt>Material</dt>
+                            <dd>{image.ai_metadata?.material ?? "Unknown"}</dd>
+                          </div>
+                          <div>
+                            <dt>Occasion</dt>
+                            <dd>{image.ai_metadata?.occasion ?? "Not inferred"}</dd>
+                          </div>
+                        </dl>
+                      </section>
+
+                      <section className="insight-panel insight-panel-human">
+                        <p className="panel-kicker">Designer Notes</p>
+                        <p className="panel-copy">{getDesignerNote(image)}</p>
+                        <div className="annotation-composer">
+                          <textarea
+                            className="annotation-input"
+                            value={noteDrafts[image.id] ?? ""}
+                            onChange={(event) =>
+                              setNoteDrafts((current) => ({
+                                ...current,
+                                [image.id]: event.target.value,
+                              }))
+                            }
+                            placeholder="Add a designer observation or follow-up note"
+                            rows={3}
+                          />
+                          <button
+                            className="secondary-button annotation-button"
+                            type="button"
+                            onClick={() => handleAnnotationSubmit(image.id)}
+                            disabled={isPending}
+                          >
+                            Save note
+                          </button>
+                        </div>
+                      </section>
                     </div>
                   </div>
                 </article>

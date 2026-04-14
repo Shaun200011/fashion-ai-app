@@ -13,6 +13,10 @@ from app.services.metadata import classify_and_store_metadata
 from app.services.storage import save_upload_file
 
 
+def build_image_url(file_path: str) -> str:
+    return f"/uploads/{Path(file_path).name}"
+
+
 def create_image_record(
     session: Session,
     file: UploadFile,
@@ -40,6 +44,7 @@ def create_image_record(
     return ImageUploadResponse(
         id=image.id or 0,
         file_path=image.file_path,
+        image_url=build_image_url(image.file_path),
         original_filename=image.original_filename,
         designer_name=image.designer_name,
         captured_at=image.captured_at,
@@ -127,6 +132,7 @@ def list_images(
             ImageListItem(
                 id=image.id or 0,
                 file_path=image.file_path,
+                image_url=build_image_url(image.file_path),
                 original_filename=image.original_filename,
                 designer_name=image.designer_name,
                 captured_at=image.captured_at,

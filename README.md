@@ -16,6 +16,18 @@ This project is intentionally scoped as a one-day proof of concept. The focus is
 
 ## Architecture
 
+```mermaid
+flowchart LR
+    A["Designer uploads image in Next.js UI"] --> B["FastAPI upload endpoint"]
+    B --> C["Local file storage"]
+    B --> D["Classification provider"]
+    D --> E["Parser / normalizer"]
+    E --> F["SQLite metadata tables"]
+    F --> G["Image list + filters APIs"]
+    G --> H["Library grid, search, filters, designer notes"]
+    F --> I["Evaluation script and summary"]
+```
+
 ### Frontend
 
 - `frontend/`
@@ -62,6 +74,10 @@ The current default experience uses a mock provider for local development, but t
 ### Dynamic filters from stored metadata
 
 Filter values are not hardcoded in the frontend. The backend aggregates current metadata values from the database and exposes them through `GET /api/filters`, which means available filter pills change as the image library changes.
+
+### Real image thumbnails in the library
+
+Uploaded images are served back through the backend and rendered directly in the library cards. This makes the app feel closer to a real inspiration board and keeps the metadata grounded in the source image.
 
 ### AI metadata and human notes are separate
 
@@ -133,6 +149,23 @@ The scaffold currently reports per-attribute accuracy for:
 - `occasion`
 - `season`
 
+## Labeling Rules For Fast Manual Evaluation
+
+To keep the evaluation realistic and timeboxed, I would manually label only the fields that are most useful and reasonably observable:
+
+- `garment_type`
+- `style`
+- `material`
+- `occasion`
+- `season`
+
+Practical guidance:
+
+- Leave a field blank rather than guessing if the image is too ambiguous
+- Treat `garment_type` as the most objective baseline field
+- Expect `material` and `occasion` to have more disagreement
+- Avoid using `consumer_profile`, `trend_notes`, or `location context` as gold-label fields unless there is unusually clear evidence
+
 ## Testing
 
 Current automated coverage includes:
@@ -146,6 +179,7 @@ Current automated coverage includes:
 
 - Browser-based image upload
 - Local image persistence
+- Real image thumbnails in the library
 - Placeholder classification and metadata persistence
 - Live image listing
 - Search and dynamic filter flows
