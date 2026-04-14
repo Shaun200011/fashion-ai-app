@@ -60,7 +60,7 @@ README.md
 | Area | Status | Notes |
 | --- | --- | --- |
 | Implementation | Done | Full-stack local app with upload, classification, library browsing, search, filters, and annotations |
-| Model Evaluation | Done with baseline caveat | 100-image benchmark, mapped labels, summary generation, and error analysis are included; current results reflect the mock classifier |
+| Model Evaluation | Implemented with mock baseline | 100-image benchmark, mapped labels, summary generation, and error analysis are included; current results reflect the mock classifier rather than a production model |
 | Testing | Done | Unit tests, API tests, and a Playwright happy-path test are included |
 | Repository Structure | Done | `backend/`, `frontend/`, `eval/`, and root documentation are in place |
 | README / Communication | Done | Setup, architecture, trade-offs, evaluation, and limitations are documented |
@@ -80,6 +80,8 @@ Classification is intentionally split into:
 - a persistence layer
 
 The current default experience uses a mock provider for local development, but the service boundary is ready for a real multimodal provider. This lets the project demonstrate AI-system structure without forcing external credentials to run the demo.
+
+The optional OpenAI-compatible path is scaffolded through the provider hook and direct HTTP requests, but it is intentionally not the default execution path for this submission.
 
 ### Dynamic filters from stored metadata
 
@@ -118,7 +120,7 @@ AI-generated metadata is stored and displayed separately from designer annotatio
 ### Backend
 
 ```bash
-cd /Users/yuxiang/fashion-ai-app/backend
+cd backend
 pip install -r requirements.txt
 pytest
 uvicorn app.main:app --reload
@@ -127,13 +129,13 @@ uvicorn app.main:app --reload
 Optional environment setup:
 
 ```bash
-cp /Users/yuxiang/fashion-ai-app/.env.example /Users/yuxiang/fashion-ai-app/.env
+cp .env.example .env
 ```
 
 ### Frontend
 
 ```bash
-cd /Users/yuxiang/fashion-ai-app/frontend
+cd frontend
 npm install
 npm run dev
 ```
@@ -141,7 +143,7 @@ npm run dev
 Run end-to-end coverage:
 
 ```bash
-cd /Users/yuxiang/fashion-ai-app/frontend
+cd frontend
 npx playwright install
 npm run test:e2e
 ```
@@ -165,8 +167,8 @@ Current workflow:
 Example:
 
 ```bash
-cd /Users/yuxiang/fashion-ai-app/backend
-PYTHONPATH=/Users/yuxiang/fashion-ai-app/backend:/Users/yuxiang/fashion-ai-app python ../eval/run_eval.py
+cd backend
+PYTHONPATH=.:.. python ../eval/run_eval.py
 ```
 
 The scaffold currently reports per-attribute accuracy for:
