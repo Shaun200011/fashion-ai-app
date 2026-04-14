@@ -1,0 +1,225 @@
+[
+  {
+    "filename": "5792.jpg",
+    "source_id": "5792",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Tops",
+      "season": "spring",
+      "occasion": "casual",
+      "base_colour": "white",
+      "style": "casual"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Tops",
+      "baseColour": "White",
+      "season": "Spring",
+      "usage": "Casual",
+      "productDisplayName": "Jealous 21 Women Multi Color Top"
+    }
+  },
+  {
+    "filename": "27434.jpg",
+    "source_id": "27434",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Bra",
+      "season": "fall",
+      "occasion": "sports",
+      "base_colour": "black"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Innerwear",
+      "articleType": "Bra",
+      "baseColour": "Black",
+      "season": "Fall",
+      "usage": "Sports",
+      "productDisplayName": "Jockey Black Xena Sports Bra 1378"
+    }
+  },
+  {
+    "filename": "30917.jpg",
+    "source_id": "30917",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Trousers",
+      "season": "summer",
+      "occasion": "ethnic",
+      "base_colour": "black"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Trousers",
+      "baseColour": "Black",
+      "season": "Summer",
+      "usage": "Ethnic",
+      "productDisplayName": "Fabindia Women Black Harem Pants"
+    }
+  },
+  {
+    "filename": "27433.jpg",
+    "source_id": "27433",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Bra",
+      "season": "winter",
+      "occasion": "sports",
+      "base_colour": "grey melange"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Innerwear",
+      "articleType": "Bra",
+      "baseColour": "Grey Melange",
+      "season": "Winter",
+      "usage": "Sports",
+      "productDisplayName": "Jockey Women Grey Melange Eva Sports Bra"
+    }
+  },
+  {
+    "filename": "25895.jpg",
+    "source_id": "25895",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Camisoles",
+      "season": "summer",
+      "occasion": "casual",
+      "base_colour": "white"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Innerwear",
+      "articleType": "Camisoles",
+      "baseColour": "White",
+      "season": "Summer",
+      "usage": "Casual",
+      "productDisplayName": "Femella Women White Camisole 005G"
+    }
+  },
+  {
+    "filename": "39120.jpg",
+    "source_id": "39120",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Leggings",
+      "season": "fall",
+      "occasion": "casual",
+      "base_colour": "brown"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Leggings",
+      "baseColour": "Brown",
+      "season": "Fall",
+      "usage": "Casual",
+      "productDisplayName": "Aneri Women Brown Leggings"
+    }
+  },
+  {
+    "filename": "41349.jpg",
+    "source_id": "41349",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Jeans",
+      "season": "spring",
+      "occasion": "casual",
+      "base_colour": "blue",
+      "style": "casual"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Jeans",
+      "baseColour": "Blue",
+      "season": "Spring",
+      "usage": "Casual",
+      "productDisplayName": "Wrangler Men Blue Skanders Jeans"
+    }
+  },
+  {
+    "filename": "26258.jpg",
+    "source_id": "26258",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Track Pants",
+      "season": "summer",
+      "occasion": "sports",
+      "base_colour": "charcoal",
+      "style": "sporty"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Track Pants",
+      "baseColour": "Charcoal",
+      "season": "Summer",
+      "usage": "Sports",
+      "productDisplayName": "Proline Men Charcoal Grey Track Pants"
+    }
+  },
+  {
+    "filename": "12163.jpg",
+    "source_id": "12163",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Leggings",
+      "season": "fall",
+      "occasion": "ethnic",
+      "base_colour": "purple"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Leggings",
+      "baseColour": "Purple",
+      "season": "Fall",
+      "usage": "Ethnic",
+      "productDisplayName": "Aurelia Women Solid Purple Leggings"
+    }
+  },
+  {
+    "filename": "19855.jpg",
+    "source_id": "19855",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Jackets",
+      "season": "winter",
+      "occasion": "casual",
+      "base_colour": "navy blue"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Jackets",
+      "baseColour": "Navy Blue",
+      "season": "Winter",
+      "usage": "Casual",
+      "productDisplayName": "U.S. Polo Assn. Men Solid Navy Blue Jackets"
+    }
+  }
+]

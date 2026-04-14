@@ -132,6 +132,15 @@ Optional environment setup:
 cp .env.example .env
 ```
 
+To try the real multimodal path, update `.env` with your API key and keep:
+
+```bash
+AI_PROVIDER=auto
+OPENAI_API_KEY=your_key_here
+OPENAI_MODEL=gpt-4.1-mini
+OPENAI_IMAGE_DETAIL=low
+```
+
 ### Frontend
 
 ```bash
@@ -152,6 +161,25 @@ Open:
 
 - frontend: `http://localhost:3000`
 - backend docs: `http://127.0.0.1:8000/docs`
+
+## Deployment Notes
+
+The application is deployable as two services:
+
+- a Next.js frontend
+- a FastAPI backend
+
+For this take-home, the default setup is intentionally local-first:
+
+- SQLite is used for speed and simplicity
+- uploaded images are stored on the local filesystem
+
+That means the current code can be deployed for a demo environment, but a production-style deployment should make two changes first:
+
+- replace SQLite with a managed database such as Postgres
+- replace local image storage with object storage such as S3 or Cloudinary
+
+The frontend is a straightforward fit for platforms like Vercel. The backend is a straightforward fit for container-friendly platforms such as Render, Fly.io, or Railway.
 
 ## Evaluation Workflow
 
@@ -192,6 +220,61 @@ The current 100-image baseline is intentionally weak because the default classif
 - `base_colour`: `0.00%`
 
 This result is expected. The current provider returns placeholder metadata designed to exercise the pipeline rather than provide meaningful production-quality classification. The main value of the current evaluation is that it establishes a repeatable benchmark before swapping in a real multimodal model.
+
+### Real-Model Sanity Check
+
+After the baseline was in place, I also wired the real multimodal provider path and ran a smaller 10-image sanity check using `gpt-4.1-mini`.
+
+This surfaced an important lesson: once the app is connected to a real model, the main failure mode is no longer "the classifier is fake", but "the model speaks natural language while the benchmark uses a fixed product taxonomy."
+
+For that reason, the evaluation now distinguishes between:
+
+- `strict normalized` accuracy: conservative comparison after canonicalizing labels
+- `semantic relaxed` accuracy: taxonomy-aware matching that allows concept overlap such as `spring/summer` matching `summer`, or `sports bra` matching `bra`
+
+Latest 10-image real-provider sanity-check results:
+
+| Field | Strict normalized | Semantic relaxed |
+| --- | --- | --- |
+| `garment_type` | `90%` | `100%` |
+| `style` | `100%` | `100%` |
+| `occasion` | `70%` | `70%` |
+| `season` | `30%` | `60%` |
+| `base_colour` | `80%` | `80%` |
+
+The takeaway is that the real model is materially stronger than the mock baseline, but the benchmark still depends heavily on normalization and label design. In particular, `season` and `occasion` remain difficult because the dataset uses coarse retail labels while the model often returns richer or overlapping concepts.
+
+### Benchmark Progression: Mock to Real Provider
+
+The project evolved in three clear stages:
+
+1. `Mock baseline`
+   The first goal was simply to prove the product workflow end to end: upload, classify, persist, search, filter, annotate, and evaluate. The mock provider made that path deterministic and easy to run locally.
+2. `Real-provider integration`
+   Once the workflow and benchmark were stable, I connected the real multimodal provider through the existing abstraction layer. This validated the service boundaries without forcing a rewrite of the app.
+3. `Semantic evaluation refinement`
+   As soon as the real model was active, it became clear that many "errors" were really taxonomy mismatches rather than vision failures. That led to the addition of strict normalized scoring and semantic relaxed scoring.
+
+This progression was useful because it separated three different questions:
+
+- Does the system work end to end?
+- Can a real model be plugged into the same architecture?
+- How should model quality be measured once the output becomes more natural-language and less taxonomy-bound?
+
+### Real-Provider Evaluation Progression
+
+| Sample size | Strict garment | Strict style | Strict occasion | Strict season | Strict colour | Semantic garment | Semantic style | Semantic occasion | Semantic season | Semantic colour |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `10` | `90%` | `100%` | `70%` | `30%` | `80%` | `100%` | `100%` | `70%` | `60%` | `80%` |
+| `50` | `42%` | `70.59%` | `66%` | `50%` | `82%` | `56%` | `70.59%` | `80%` | `58%` | `82%` |
+| `100` | `43%` | `78.12%` | `56%` | `48%` | `87%` | `52%` | `78.12%` | `74%` | `54%` | `87%` |
+
+A few patterns held up as the sample size increased:
+
+- `base_colour` remained the most stable attribute once palette outputs were collapsed into canonical colors
+- `occasion` improved substantially under semantic scoring, which suggests many misses were label-taxonomy mismatches rather than true model failures
+- `garment_type` was hurt by retail taxonomy boundaries such as `Tops` vs `T-shirt`, even when the underlying concept was visually correct
+- `season` remained the least stable field because both the dataset and the model naturally allow overlapping answers
 
 ## Labeling Rules For Fast Manual Evaluation
 
@@ -245,6 +328,7 @@ The current upload flow already provides an in-progress button state and complet
 - Local image persistence
 - Real image thumbnails in the library
 - Placeholder classification and metadata persistence
+- Optional real-provider path through the same classification interface
 - Live image listing
 - Search and dynamic filter flows
 - Designer note annotations
@@ -288,14 +372,33 @@ The current evaluation behaves exactly like a placeholder baseline should:
 
 If more time were available, the next most valuable improvement would be replacing the mock provider with a real multimodal classifier and rerunning the same 100-image benchmark without changing the rest of the evaluation pipeline.
 
+The real-provider sanity check revealed a second layer of issues that only becomes visible once the model is actually grounded in the image:
+
+- The model often predicts the right concept but not the exact dataset label, such as `Top / T-shirt` vs `Tops`
+- `season` is especially sensitive to label granularity because the dataset often expects a single season while the model naturally returns `spring/summer` or `all seasons`
+- `occasion` remains partly subjective and sometimes reflects a true semantic disagreement rather than a normalization miss
+- `base_colour` becomes much more reliable once palette outputs are collapsed into canonical colors
+
+That experience changed the evaluation design: instead of relying only on exact string matching, the benchmark now reports both conservative normalized scores and a more realistic taxonomy-aware semantic score for the real-model sanity check.
+
+## Lessons From Real-Model Integration
+
+- A mock classifier is enough to validate the workflow, but not enough to validate the evaluation design
+- Real multimodal output quickly exposes taxonomy mismatches between natural-language descriptions and product-dataset labels
+- Provider abstraction paid off: the real model could be plugged in without changing the upload, persistence, search, or annotation flows
+- Normalization matters almost as much as prompt quality for structured attribute benchmarks
+- Some fields, especially `season` and `occasion`, are as much a labeling problem as a modeling problem
+- Running the same benchmark at `10`, `50`, and `100` samples is useful because it separates small-sample optimism from more stable medium- and full-scale behavior
+
 ## If I Had More Time
 
-- Replace the mock provider with a real multimodal model by default
+- Promote the real multimodal provider from optional path to the default classifier
 - Expand filters to additional metadata dimensions
 - Add richer search, including embedding-based retrieval
 - Add a dedicated annotation review pass on top of the current 100-image benchmark
+- Refine the evaluation taxonomy so subjective fields have clearer semantic scoring rules
 - Use designer notes as an additional retrieval signal and as feedback for future model refinement
 
 ## Submission Status
 
-This repository now includes the core end-to-end workflow, automated tests, a 100-image evaluation benchmark, and submission-ready documentation. The largest remaining improvement would be swapping the mock classifier for a real multimodal provider and rerunning the established benchmark.
+This repository now includes the core end-to-end workflow, automated tests, a 100-image evaluation benchmark, a real-model sanity-check pass, and submission-ready documentation. The largest remaining improvement would be promoting the real provider to the default path and rerunning the full benchmark with the improved semantic evaluation rules.

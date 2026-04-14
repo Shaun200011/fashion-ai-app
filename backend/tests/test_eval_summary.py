@@ -21,7 +21,10 @@ def test_compute_accuracy_and_summary() -> None:
     scores = compute_accuracy(results)
     summary = build_summary(results, scores)
 
-    assert scores["garment_type"] == 1.0
-    assert scores["base_colour"] == 0.0
+    assert scores["garment_type"]["strict"] == 1.0
+    assert scores["garment_type"]["semantic"] == 1.0
+    assert scores["base_colour"]["strict"] == 0.0
+    assert scores["base_colour"]["semantic"] == 0.0
     assert "linen-shirt.jpg" in summary
     assert "Per-Attribute Accuracy" in summary
+    assert "Semantic Relaxed Accuracy" in summary

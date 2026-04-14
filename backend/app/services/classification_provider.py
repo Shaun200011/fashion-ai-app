@@ -1,5 +1,6 @@
 import base64
 import json
+import re
 from pathlib import Path
 from typing import Any, Optional, Protocol
 from urllib.error import HTTPError, URLError
@@ -69,6 +70,7 @@ class OpenAIClassificationProvider:
                         {
                             "type": "input_image",
                             "image_url": f"data:{mime_type};base64,{encoded_image}",
+                            "detail": settings.openai_image_detail,
                         },
                     ],
                 }
@@ -112,7 +114,7 @@ def get_classification_provider() -> ClassificationProvider:
 def _extract_json_payload(raw_response: dict[str, Any]) -> dict[str, Optional[str]]:
     if isinstance(raw_response.get("output_text"), str):
         try:
-            return json.loads(raw_response["output_text"])
+            return json.loads(_strip_json_fences(raw_response["output_text"]))
         except json.JSONDecodeError as exc:
             raise RuntimeError("OpenAI response did not contain valid JSON in output_text") from exc
 
@@ -120,7 +122,7 @@ def _extract_json_payload(raw_response: dict[str, Any]) -> dict[str, Optional[st
         for content_item in output_item.get("content", []):
             if content_item.get("type") == "output_text" and isinstance(content_item.get("text"), str):
                 try:
-                    return json.loads(content_item["text"])
+                    return json.loads(_strip_json_fences(content_item["text"]))
                 except json.JSONDecodeError as exc:
                     raise RuntimeError("OpenAI response text was not valid JSON") from exc
 
@@ -135,3 +137,11 @@ def _guess_mime_type(suffix: str) -> str:
     if suffix in {".gif"}:
         return "image/gif"
     return "image/jpeg"
+
+
+def _strip_json_fences(text: str) -> str:
+    stripped = text.strip()
+    fenced = re.match(r"^```(?:json)?\s*(.*?)\s*```$", stripped, re.DOTALL)
+    if fenced:
+        return fenced.group(1).strip()
+    return stripped
