@@ -55,6 +55,16 @@ eval/      evaluation scripts, labels, and summary output
 README.md
 ```
 
+## Deliverables Checklist
+
+| Area | Status | Notes |
+| --- | --- | --- |
+| Implementation | Done | Full-stack local app with upload, classification, library browsing, search, filters, and annotations |
+| Model Evaluation | Done with baseline caveat | 100-image benchmark, mapped labels, summary generation, and error analysis are included; current results reflect the mock classifier |
+| Testing | Done | Unit tests, API tests, and a Playwright happy-path test are included |
+| Repository Structure | Done | `backend/`, `frontend/`, `eval/`, and root documentation are in place |
+| README / Communication | Done | Setup, architecture, trade-offs, evaluation, and limitations are documented |
+
 ## Key Technical Decisions
 
 ### Python-first backend
@@ -82,6 +92,17 @@ Uploaded images are served back through the backend and rendered directly in the
 ### AI metadata and human notes are separate
 
 AI-generated metadata is stored and displayed separately from designer annotations. This is important because several target attributes are subjective, and the product should support human correction rather than present AI output as ground truth.
+
+## Proof-of-Concept Trade-Offs
+
+| Decision | Why I chose it | Trade-off |
+| --- | --- | --- |
+| SQLite over Postgres | Fast local setup and low operational overhead for a take-home | Not designed for multi-user or production-scale workloads |
+| Mock provider as default | Guarantees the demo runs locally without external keys | Evaluation quality is intentionally weak until a real model is connected |
+| Provider abstraction before real model integration | Keeps the classification pipeline replaceable and testable | Slightly more structure up front than a hardcoded demo call |
+| Data-driven filter values with schema-driven filter groups | Meets the prompt requirement without overengineering | Filter dimensions are predefined rather than fully discovered from arbitrary columns |
+| Lexical search over embeddings | Faster to implement and easier to explain in a one-day scope | Semantic retrieval quality is limited |
+| Source-metadata-based evaluation labels | Makes a 100-image benchmark feasible within time constraints | Some fields are mapped proxies rather than native labels |
 
 ## Current API Surface
 
@@ -115,6 +136,14 @@ cp /Users/yuxiang/fashion-ai-app/.env.example /Users/yuxiang/fashion-ai-app/.env
 cd /Users/yuxiang/fashion-ai-app/frontend
 npm install
 npm run dev
+```
+
+Run end-to-end coverage:
+
+```bash
+cd /Users/yuxiang/fashion-ai-app/frontend
+npx playwright install
+npm run test:e2e
 ```
 
 Open:
@@ -188,6 +217,26 @@ Current automated coverage includes:
 - evaluation-summary tests for accuracy aggregation
 - a Playwright happy-path test for upload, classify, and filter
 
+## UX Notes
+
+### Large image libraries
+
+If the library grew substantially beyond the current proof-of-concept size, the next user-experience improvements would be:
+
+- image lazy loading
+- pagination or infinite scroll
+- skeleton states for library cards
+- more explicit server-side loading placeholders
+
+### Slow classifier responses
+
+The current upload flow already provides an in-progress button state and completion feedback. If the classifier were replaced with a slower real model, the next improvements would be:
+
+- explicit classify-in-progress states per upload
+- background job status polling
+- progress messaging for upload vs classification
+- delayed placeholder cards so the library feels responsive immediately
+
 ## What Works Today
 
 - Browser-based image upload
@@ -243,6 +292,7 @@ If more time were available, the next most valuable improvement would be replaci
 - Expand filters to additional metadata dimensions
 - Add richer search, including embedding-based retrieval
 - Add a dedicated annotation review pass on top of the current 100-image benchmark
+- Use designer notes as an additional retrieval signal and as feedback for future model refinement
 
 ## Submission Status
 
