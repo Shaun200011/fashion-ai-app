@@ -4,6 +4,18 @@ Fashion AI App is a lightweight web application for organizing fashion inspirati
 
 This project is intentionally scoped as a one-day proof of concept. The focus is on a strong end-to-end workflow, clean service boundaries, a realistic evaluation scaffold, and honest trade-offs.
 
+## Results Snapshot
+
+The project includes three levels of real-model evaluation using `gpt-4.1-mini`.
+
+| Run | Sample size | garment_type (strict / semantic) | style | occasion (strict / semantic) | season (strict / semantic) | base_colour |
+| --- | --- | --- | --- | --- | --- | --- |
+| Real-model sanity check | 10 | `90% / 100%` | `100%` | `70% / 70%` | `30% / 60%` | `80%` |
+| Real-model subset | 50 | `42% / 56%` | `70.59%` | `66% / 80%` | `50% / 58%` | `82%` |
+| Real-model full benchmark | 100 | `43% / 52%` | `78.12%` | `56% / 74%` | `48% / 54%` | `87%` |
+
+The biggest lesson from this progression is that once the real model is active, many of the remaining errors are no longer pure vision failures. They are taxonomy and evaluation problems: `Top` vs `Tops`, `sports bra` vs `Bra`, or `spring/summer` vs a single season label.
+
 ## Demo Scope
 
 - Upload garment or street-fashion images from the browser
@@ -60,7 +72,7 @@ README.md
 | Area | Status | Notes |
 | --- | --- | --- |
 | Implementation | Done | Full-stack local app with upload, classification, library browsing, search, filters, and annotations |
-| Model Evaluation | Implemented with mock baseline | 100-image benchmark, mapped labels, summary generation, and error analysis are included; current results reflect the mock classifier rather than a production model |
+| Model Evaluation | Done | Includes 10-image, 50-image, and 100-image real-model benchmarks with strict and semantic scoring |
 | Testing | Done | Unit tests, API tests, and a Playwright happy-path test are included |
 | Repository Structure | Done | `backend/`, `frontend/`, `eval/`, and root documentation are in place |
 | README / Communication | Done | Setup, architecture, trade-offs, evaluation, and limitations are documented |
@@ -79,9 +91,7 @@ Classification is intentionally split into:
 - a parser/normalizer layer
 - a persistence layer
 
-The current default experience uses a mock provider for local development, but the service boundary is ready for a real multimodal provider. This lets the project demonstrate AI-system structure without forcing external credentials to run the demo.
-
-The optional OpenAI-compatible path is scaffolded through the provider hook and direct HTTP requests, but it is intentionally not the default execution path for this submission.
+The classification system is split into a provider layer, parser/normalizer layer, and persistence layer so the model can be swapped without changing the rest of the app. In practice, this made it possible to start with a local placeholder provider, then connect the real multimodal path and run the same benchmark pipeline against `gpt-4.1-mini`.
 
 ### Dynamic filters from stored metadata
 
@@ -100,7 +110,7 @@ AI-generated metadata is stored and displayed separately from designer annotatio
 | Decision | Why I chose it | Trade-off |
 | --- | --- | --- |
 | SQLite over Postgres | Fast local setup and low operational overhead for a take-home | Not designed for multi-user or production-scale workloads |
-| Mock provider as default | Guarantees the demo runs locally without external keys | Evaluation quality is intentionally weak until a real model is connected |
+| Real provider behind environment configuration | Keeps the demo flexible for both local and deployed runs | Public demo environments still need careful API-key handling and cost controls |
 | Provider abstraction before real model integration | Keeps the classification pipeline replaceable and testable | Slightly more structure up front than a hardcoded demo call |
 | Data-driven filter values with schema-driven filter groups | Meets the prompt requirement without overengineering | Filter dimensions are predefined rather than fully discovered from arbitrary columns |
 | Lexical search over embeddings | Faster to implement and easier to explain in a one-day scope | Semantic retrieval quality is limited |
@@ -199,6 +209,17 @@ For a public demo, I would still recommend switching:
 - `SQLite` -> managed Postgres
 - local image files -> object storage
 
+### Quick Deploy Path
+
+If I were shipping this take-home as a lightweight public demo, I would use:
+
+1. `Render` for the FastAPI backend using the included `render.yaml`
+2. `Vercel` or `Render` for the Next.js frontend
+3. `NEXT_PUBLIC_API_BASE_URL` pointed at the deployed backend `/api`
+4. `AI_PROVIDER=auto` with `OPENAI_API_KEY` configured for real inference
+
+That setup would make the project accessible without materially changing the code structure already present in the repository.
+
 ## Evaluation Workflow
 
 The evaluation scaffold is implemented and currently runs against a 100-image sample drawn from the local fashion dataset.
@@ -227,21 +248,26 @@ The scaffold currently reports per-attribute accuracy for:
 
 These fields were chosen to match the available source metadata in the selected fashion dataset. The original take-home prompt mentions fields such as `material`, but this dataset does not provide reliable material labels, so `base_colour` is used instead as a directly supported visual attribute.
 
-### Current Baseline Results
+### Full Real-Model Benchmark
 
-The current 100-image baseline is intentionally weak because the default classifier is still mock-based. The latest summary reports:
+The current 100-image benchmark was run against the real multimodal provider using `gpt-4.1-mini`.
 
-- `garment_type`: `0.00%`
-- `style`: `3.12%`
-- `occasion`: `0.00%`
-- `season`: `0.00%`
-- `base_colour`: `0.00%`
-
-This result is expected. The current provider returns placeholder metadata designed to exercise the pipeline rather than provide meaningful production-quality classification. The main value of the current evaluation is that it establishes a repeatable benchmark before swapping in a real multimodal model.
+- Strict normalized:
+  - `garment_type`: `43%`
+  - `style`: `78.12%`
+  - `occasion`: `56%`
+  - `season`: `48%`
+  - `base_colour`: `87%`
+- Semantic relaxed:
+  - `garment_type`: `52%`
+  - `style`: `78.12%`
+  - `occasion`: `74%`
+  - `season`: `54%`
+  - `base_colour`: `87%`
 
 ### Real-Model Sanity Check
 
-After the baseline was in place, I also wired the real multimodal provider path and ran a smaller 10-image sanity check using `gpt-4.1-mini`.
+After the end-to-end workflow was stable, I wired the real multimodal provider path and first ran a smaller 10-image sanity check using `gpt-4.1-mini`.
 
 This surfaced an important lesson: once the app is connected to a real model, the main failure mode is no longer "the classifier is fake", but "the model speaks natural language while the benchmark uses a fixed product taxonomy."
 
@@ -260,14 +286,14 @@ Latest 10-image real-provider sanity-check results:
 | `season` | `30%` | `60%` |
 | `base_colour` | `80%` | `80%` |
 
-The takeaway is that the real model is materially stronger than the mock baseline, but the benchmark still depends heavily on normalization and label design. In particular, `season` and `occasion` remain difficult because the dataset uses coarse retail labels while the model often returns richer or overlapping concepts.
+The takeaway is that the real model is materially stronger than the earlier placeholder classifier, but the benchmark still depends heavily on normalization and label design. In particular, `season` and `occasion` remain difficult because the dataset uses coarse retail labels while the model often returns richer or overlapping concepts.
 
 ### Benchmark Progression: Mock to Real Provider
 
 The project evolved in three clear stages:
 
-1. `Mock baseline`
-   The first goal was simply to prove the product workflow end to end: upload, classify, persist, search, filter, annotate, and evaluate. The mock provider made that path deterministic and easy to run locally.
+1. `Workflow-first integration`
+   The first goal was to prove the product workflow end to end: upload, classify, persist, search, filter, annotate, and evaluate.
 2. `Real-provider integration`
    Once the workflow and benchmark were stable, I connected the real multimodal provider through the existing abstraction layer. This validated the service boundaries without forcing a rewrite of the app.
 3. `Semantic evaluation refinement`
@@ -354,7 +380,7 @@ The current upload flow already provides an in-progress button state and complet
 
 ## Known Limitations
 
-- The default classifier is still mock-based unless a real provider is configured
+- A deployed real-model demo requires a valid API key and budget controls
 - Images are stored locally instead of in cloud object storage
 - Search is lexical and metadata-based, not embedding-based
 - No auth or multi-user workflow is implemented
@@ -382,15 +408,7 @@ For that reason, the product is designed to treat AI output as a searchable sugg
 
 ## Error Analysis
 
-The current evaluation behaves exactly like a placeholder baseline should:
-
-- `garment_type` is near zero because the mock provider mostly defaults to `dress` unless the filename itself contains strong hints
-- `occasion`, `season`, and `base_colour` are near zero because the mock output is not grounded in image content
-- `style` is slightly above zero only because a few mapped labels happen to overlap with the placeholder default of `contemporary`
-
-If more time were available, the next most valuable improvement would be replacing the mock provider with a real multimodal classifier and rerunning the same 100-image benchmark without changing the rest of the evaluation pipeline.
-
-The real-provider sanity check revealed a second layer of issues that only becomes visible once the model is actually grounded in the image:
+The real-provider benchmarks revealed a second layer of issues that only becomes visible once the model is actually grounded in the image:
 
 - The model often predicts the right concept but not the exact dataset label, such as `Top / T-shirt` vs `Tops`
 - `season` is especially sensitive to label granularity because the dataset often expects a single season while the model naturally returns `spring/summer` or `all seasons`
@@ -401,7 +419,7 @@ That experience changed the evaluation design: instead of relying only on exact 
 
 ## Lessons From Real-Model Integration
 
-- A mock classifier is enough to validate the workflow, but not enough to validate the evaluation design
+- A workflow-first implementation is enough to validate the app architecture, but not enough to validate the evaluation design
 - Real multimodal output quickly exposes taxonomy mismatches between natural-language descriptions and product-dataset labels
 - Provider abstraction paid off: the real model could be plugged in without changing the upload, persistence, search, or annotation flows
 - Normalization matters almost as much as prompt quality for structured attribute benchmarks
@@ -410,7 +428,7 @@ That experience changed the evaluation design: instead of relying only on exact 
 
 ## If I Had More Time
 
-- Promote the real multimodal provider from optional path to the default classifier
+- Make the real multimodal provider the default runtime path in deployed environments
 - Expand filters to additional metadata dimensions
 - Add richer search, including embedding-based retrieval
 - Add a dedicated annotation review pass on top of the current 100-image benchmark
@@ -419,4 +437,4 @@ That experience changed the evaluation design: instead of relying only on exact 
 
 ## Submission Status
 
-This repository now includes the core end-to-end workflow, automated tests, a 100-image evaluation benchmark, a real-model sanity-check pass, and submission-ready documentation. The largest remaining improvement would be promoting the real provider to the default path and rerunning the full benchmark with the improved semantic evaluation rules.
+This repository now includes the core end-to-end workflow, automated tests, 10/50/100-image real-model benchmarks, deployment starter configuration, and submission-ready documentation. The largest remaining improvements would be production-grade storage, managed database infrastructure, and richer retrieval beyond lexical search.

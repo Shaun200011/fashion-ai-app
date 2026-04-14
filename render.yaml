@@ -5,22 +5,28 @@ services:
     rootDir: backend
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    disk:
+      name: fashion-ai-backend-data
+      mountPath: /var/data
+      sizeGB: 1
     envVars:
       - key: APP_NAME
         value: Fashion AI App API
       - key: API_PREFIX
         value: /api
       - key: SQLITE_URL
-        value: sqlite:///data/fashion_ai_app.db
+        value: sqlite:////var/data/fashion_ai_app.db
       - key: LOCAL_IMAGE_DIR
-        value: data/images
+        value: /var/data/images
       - key: AI_PROVIDER
-        value: mock
+        value: auto
       - key: OPENAI_MODEL
         value: gpt-4.1-mini
       - key: OPENAI_IMAGE_DETAIL
         value: low
       - key: OPENAI_API_KEY
+        sync: false
+      - key: CORS_ORIGINS
         sync: false
 
   - type: web
