@@ -345,6 +345,7 @@ Current automated coverage includes:
 - API tests for upload, image listing, filtering, and annotations
 - evaluation-summary tests for accuracy aggregation
 - a Playwright happy-path test for upload, classify, and filter
+- a GitHub Actions workflow that runs backend tests and a frontend production build on push / PR
 
 ## UX Notes
 

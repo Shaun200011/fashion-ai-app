@@ -110,6 +110,7 @@ function getAiSummary(image: ImageListItem): string {
 
 export function LibraryShell({ initialImages, hasBackendData, filterGroups }: Props) {
   const [images, setImages] = useState(initialImages);
+  const [selectedImage, setSelectedImage] = useState<ImageListItem | null>(null);
   const [designerName, setDesignerName] = useState("Womenswear Team");
   const [capturedAt, setCapturedAt] = useState("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -122,6 +123,8 @@ export function LibraryShell({ initialImages, hasBackendData, filterGroups }: Pr
   const hasImages = images.length > 0;
   const isUsingFallback = !hasImages && !hasBackendData;
   const visibleFilterGroups = filterGroups.length > 0 ? filterGroups : fallbackFilterGroups;
+
+  const selectedImageCanonical = selectedImage ? getCanonicalPreview(selectedImage) : null;
 
   function refreshImages(nextQuery: string, nextFilters: Record<string, string>) {
     startTransition(async () => {
@@ -455,6 +458,15 @@ export function LibraryShell({ initialImages, hasBackendData, filterGroups }: Pr
                         </div>
                       </section>
                     </div>
+                    <div className="look-footer">
+                      <button
+                        className="secondary-button detail-button"
+                        type="button"
+                        onClick={() => setSelectedImage(image)}
+                      >
+                        Open detail view
+                      </button>
+                    </div>
                   </div>
                 </article>
               ))
@@ -487,6 +499,176 @@ export function LibraryShell({ initialImages, hasBackendData, filterGroups }: Pr
               ))}
         </div>
       </section>
+
+      {selectedImage ? (
+        <div
+          className="detail-backdrop"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Detail view for ${getDisplayTitle(selectedImage.original_filename)}`}
+          onClick={() => setSelectedImage(null)}
+        >
+          <div className="detail-drawer" onClick={(event) => event.stopPropagation()}>
+            <button
+              className="detail-close"
+              type="button"
+              aria-label="Close detail view"
+              onClick={() => setSelectedImage(null)}
+            >
+              Close
+            </button>
+
+            <div className="detail-media">
+              <img
+                alt={getDisplayTitle(selectedImage.original_filename)}
+                className="detail-image"
+                src={buildAssetUrl(selectedImage.image_url)}
+              />
+            </div>
+
+            <div className="detail-content">
+              <div className="detail-header">
+                <div>
+                  <p className="section-label">Detail View</p>
+                  <h2>{getDisplayTitle(selectedImage.original_filename)}</h2>
+                  <p className="detail-subtitle">{selectedImage.original_filename}</p>
+                </div>
+                <div className="detail-chip-stack">
+                  <span className="look-chip">{getPaletteLabel(selectedImage)}</span>
+                  <span className="look-chip look-chip-accent">
+                    {selectedImage.ai_metadata?.season ?? "Season pending"}
+                  </span>
+                </div>
+              </div>
+
+              <div className="detail-columns">
+                <section className="detail-panel">
+                  <p className="panel-kicker">AI Metadata</p>
+                  <p className="panel-copy">{getAiSummary(selectedImage)}</p>
+                  <dl className="detail-meta">
+                    <div>
+                      <dt>Garment Type</dt>
+                      <dd>{selectedImage.ai_metadata?.garment_type ?? "Unknown"}</dd>
+                    </div>
+                    <div>
+                      <dt>Style</dt>
+                      <dd>{selectedImage.ai_metadata?.style ?? "Not inferred"}</dd>
+                    </div>
+                    <div>
+                      <dt>Material</dt>
+                      <dd>{selectedImage.ai_metadata?.material ?? "Unknown"}</dd>
+                    </div>
+                    <div>
+                      <dt>Occasion</dt>
+                      <dd>{selectedImage.ai_metadata?.occasion ?? "Not inferred"}</dd>
+                    </div>
+                    <div>
+                      <dt>Pattern</dt>
+                      <dd>{selectedImage.ai_metadata?.pattern ?? "Not inferred"}</dd>
+                    </div>
+                    <div>
+                      <dt>Trend Notes</dt>
+                      <dd>{selectedImage.ai_metadata?.trend_notes ?? "No trend notes yet"}</dd>
+                    </div>
+                  </dl>
+                </section>
+
+                <section className="detail-panel detail-panel-soft">
+                  <p className="panel-kicker">Design Context</p>
+                  <dl className="detail-meta">
+                    <div>
+                      <dt>Designer Note</dt>
+                      <dd>{getDesignerNote(selectedImage)}</dd>
+                    </div>
+                    <div>
+                      <dt>Location Context</dt>
+                      <dd>{getLocationLabel(selectedImage)}</dd>
+                    </div>
+                    <div>
+                      <dt>Captured At</dt>
+                      <dd>{selectedImage.captured_at ?? "Capture date not provided"}</dd>
+                    </div>
+                    <div>
+                      <dt>Imported</dt>
+                      <dd>{new Date(selectedImage.created_at).toLocaleString()}</dd>
+                    </div>
+                  </dl>
+
+                  <div className="taxonomy-preview">
+                    <p className="panel-kicker">Taxonomy Preview</p>
+                    <div className="taxonomy-chip-row">
+                      <span className="taxonomy-chip">
+                        Garment: {selectedImageCanonical?.garmentType ?? "pending"}
+                      </span>
+                      <span className="taxonomy-chip">
+                        Occasion: {selectedImageCanonical?.occasion ?? "pending"}
+                      </span>
+                      <span className="taxonomy-chip">
+                        Season: {selectedImageCanonical?.season ?? "pending"}
+                      </span>
+                      <span className="taxonomy-chip">
+                        Colour: {selectedImageCanonical?.baseColour ?? "pending"}
+                      </span>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </main>
   );
+}
+
+function getCanonicalPreview(image: ImageListItem) {
+  const garment = (image.ai_metadata?.garment_type ?? "").toLowerCase();
+  const occasion = (image.ai_metadata?.occasion ?? "").toLowerCase();
+  const season = (image.ai_metadata?.season ?? "").toLowerCase();
+  const colours = (image.ai_metadata?.color_palette ?? "").toLowerCase();
+
+  return {
+    garmentType:
+      garment.includes("bra")
+        ? "bra"
+        : garment.includes("cami") || garment.includes("tank")
+          ? "camisoles"
+          : garment.includes("shirt")
+            ? "shirts"
+            : garment.includes("pant") || garment.includes("trouser")
+              ? "trousers"
+              : garment.includes("top")
+                ? "tops"
+                : garment || null,
+    occasion:
+      occasion.includes("sport") || occasion.includes("workout")
+        ? "sports"
+        : occasion.includes("ethnic") || occasion.includes("traditional")
+          ? "ethnic"
+          : occasion.includes("formal") || occasion.includes("office")
+            ? "formal"
+            : occasion || null,
+    season: season.includes("all")
+      ? "all seasons"
+      : season.includes("summer")
+        ? "summer"
+        : season.includes("winter")
+          ? "winter"
+          : season.includes("spring")
+            ? "spring"
+            : season.includes("fall") || season.includes("autumn")
+              ? "fall"
+              : season || null,
+    baseColour: colours.includes("black")
+      ? "black"
+      : colours.includes("white")
+        ? "white"
+        : colours.includes("blue")
+          ? "blue"
+          : colours.includes("grey") || colours.includes("gray")
+            ? "grey"
+            : colours.includes("brown")
+              ? "brown"
+              : colours || null,
+  };
 }
