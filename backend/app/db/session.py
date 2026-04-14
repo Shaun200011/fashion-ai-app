@@ -1,5 +1,6 @@
 from pathlib import Path
 
+from sqlalchemy import text
 from sqlmodel import Session, SQLModel, create_engine
 
 from app.core.config import settings
@@ -18,11 +19,26 @@ def get_engine():
 
 
 def init_db() -> None:
-    SQLModel.metadata.create_all(get_engine())
+    engine = get_engine()
+    SQLModel.metadata.create_all(engine)
+    _run_sqlite_migrations(engine)
 
 
 def get_session():
     engine = get_engine()
     SQLModel.metadata.create_all(engine)
+    _run_sqlite_migrations(engine)
     with Session(engine) as session:
         yield session
+
+
+def _run_sqlite_migrations(engine) -> None:
+    if not settings.sqlite_url.startswith("sqlite:///"):
+        return
+
+    with engine.begin() as connection:
+        columns = connection.execute(text("PRAGMA table_info(annotation)")).fetchall()
+        column_names = {column[1] for column in columns}
+
+        if columns and "author" not in column_names:
+            connection.execute(text("ALTER TABLE annotation ADD COLUMN author VARCHAR"))

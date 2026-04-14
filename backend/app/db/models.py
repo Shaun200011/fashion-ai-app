@@ -37,4 +37,5 @@ class Annotation(SQLModel, table=True):
     image_id: int = Field(index=True, foreign_key="image.id")
     kind: str
     content: str
+    author: Optional[str] = None
     created_at: datetime = Field(default_factory=datetime.utcnow)

@@ -8,6 +8,7 @@ from sqlmodel import Session, select
 from app.db.models import AiMetadata, Image
 from app.schemas.classification import ClassificationResult
 from app.schemas.image import ImageListItem, ImageUploadResponse
+from app.services.annotations import list_annotations_for_images
 from app.services.metadata import classify_and_store_metadata
 from app.services.storage import save_upload_file
 
@@ -84,6 +85,7 @@ def list_images(
     images = session.exec(select(Image).order_by(Image.created_at.desc())).all()
     metadata_rows = session.exec(select(AiMetadata)).all()
     metadata_by_image_id = {row.image_id: row for row in metadata_rows}
+    annotations_by_image_id = list_annotations_for_images(session)
     items: list[ImageListItem] = []
 
     for image in images:
@@ -129,6 +131,7 @@ def list_images(
                 captured_at=image.captured_at,
                 created_at=image.created_at,
                 ai_metadata=classification,
+                annotations=annotations_by_image_id.get(image.id or 0, []),
             )
         )
 

@@ -82,4 +82,29 @@ export async function uploadImage(input: {
   return response.json();
 }
 
+export async function createAnnotation(input: {
+  imageId: number;
+  kind?: string;
+  content: string;
+  author?: string;
+}) {
+  const response = await fetch(`${API_BASE_URL}/images/${input.imageId}/annotations`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      kind: input.kind ?? "note",
+      content: input.content,
+      author: input.author,
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to create annotation.");
+  }
+
+  return response.json();
+}
+
 export { API_BASE_URL };

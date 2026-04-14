@@ -61,6 +61,7 @@ npm run dev
 - `GET /api/images`: returns uploaded images with attached AI metadata and supports query/filter parameters
 - `GET /api/filters`: returns dynamic filter groups aggregated from stored AI metadata
 - `POST /api/images/{image_id}/classify`: reruns placeholder classification for a stored image
+- `POST /api/images/{image_id}/annotations`: creates a designer note or tag linked to an image
 
 ## Current Frontend Status
 
@@ -69,3 +70,4 @@ npm run dev
 - Shared TypeScript types and backend API client helpers
 - Homepage library reads live image data and supports basic browser-based upload
 - Homepage supports live text search and dynamic filter interaction
+- Homepage supports lightweight designer note annotations

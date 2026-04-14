@@ -6,10 +6,12 @@ from sqlmodel import Session
 
 from app.db.models import Image
 from app.db.session import get_session
+from app.schemas.annotation import AnnotationCreate, AnnotationResponse
 from app.schemas.classification import ClassificationResponse
 from app.schemas.filter import FilterGroup
 from app.schemas.health import HealthResponse
 from app.schemas.image import ImageListItem, ImageUploadResponse
+from app.services.annotations import create_annotation
 from app.services.filters import list_filter_groups
 from app.services.images import create_image_record, list_images
 from app.services.metadata import classify_and_store_metadata
@@ -77,3 +79,19 @@ def classify_image(image_id: int, session: Session = Depends(get_session)) -> Cl
         filename=image.original_filename,
     )
     return ClassificationResponse(image_id=image.id or 0, **result.model_dump())
+
+
+@router.post(
+    "/images/{image_id}/annotations",
+    response_model=AnnotationResponse,
+    tags=["annotations"],
+)
+def create_image_annotation(
+    image_id: int,
+    payload: AnnotationCreate,
+    session: Session = Depends(get_session),
+) -> AnnotationResponse:
+    try:
+        return create_annotation(session, image_id=image_id, payload=payload)
+    except ValueError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc

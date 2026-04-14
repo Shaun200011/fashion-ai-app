@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from "react";
 
-import { fetchFilteredImages, uploadImage } from "@/lib/api";
+import { createAnnotation, fetchFilteredImages, uploadImage } from "@/lib/api";
 import type { FilterGroup, ImageListItem } from "@/lib/types";
 
 type Props = {
@@ -70,6 +70,11 @@ function getPaletteLabel(image: ImageListItem): string {
 }
 
 function getDesignerNote(image: ImageListItem): string {
+  if (image.annotations.length > 0) {
+    const latest = image.annotations[0];
+    return latest.author ? `${latest.author}: ${latest.content}` : latest.content;
+  }
+
   if (image.designer_name) {
     return `${image.designer_name} uploaded this look for later review.`;
   }
@@ -85,6 +90,7 @@ export function LibraryShell({ initialImages, hasBackendData, filterGroups }: Pr
   const [feedback, setFeedback] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [activeFilters, setActiveFilters] = useState<Record<string, string>>({});
+  const [noteDrafts, setNoteDrafts] = useState<Record<number, string>>({});
   const [isPending, startTransition] = useTransition();
 
   const hasImages = images.length > 0;
@@ -154,6 +160,38 @@ export function LibraryShell({ initialImages, hasBackendData, filterGroups }: Pr
         setImages(nextImages);
       } catch (_error) {
         setFeedback("Upload failed. Make sure the backend is running on port 8000.");
+      }
+    });
+  }
+
+  function handleAnnotationSubmit(imageId: number) {
+    const content = (noteDrafts[imageId] ?? "").trim();
+    if (!content) {
+      setFeedback("Write a short designer note before saving.");
+      return;
+    }
+
+    setFeedback(null);
+
+    startTransition(async () => {
+      try {
+        await createAnnotation({
+          imageId,
+          content,
+          author: designerName.trim() || "Designer",
+        });
+        const nextImages = await fetchFilteredImages({
+          query: query || undefined,
+          garment_type: activeFilters.garment_type,
+          material: activeFilters.material,
+          season: activeFilters.season,
+          occasion: activeFilters.occasion,
+        });
+        setImages(nextImages);
+        setNoteDrafts((current) => ({ ...current, [imageId]: "" }));
+        setFeedback("Designer note saved.");
+      } catch (_error) {
+        setFeedback("Could not save the note. Make sure the backend is running.");
       }
     });
   }
@@ -341,6 +379,28 @@ export function LibraryShell({ initialImages, hasBackendData, filterGroups }: Pr
                         <dd>{getDesignerNote(image)}</dd>
                       </div>
                     </dl>
+                    <div className="annotation-composer">
+                      <textarea
+                        className="annotation-input"
+                        value={noteDrafts[image.id] ?? ""}
+                        onChange={(event) =>
+                          setNoteDrafts((current) => ({
+                            ...current,
+                            [image.id]: event.target.value,
+                          }))
+                        }
+                        placeholder="Add a designer observation or follow-up note"
+                        rows={3}
+                      />
+                      <button
+                        className="secondary-button annotation-button"
+                        type="button"
+                        onClick={() => handleAnnotationSubmit(image.id)}
+                        disabled={isPending}
+                      >
+                        Save note
+                      </button>
+                    </div>
                   </div>
                 </article>
               ))

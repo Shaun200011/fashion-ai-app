@@ -92,3 +92,40 @@ def test_image_search_and_filters_return_matching_items(tmp_path) -> None:
     finally:
         settings.local_image_dir = original_dir
         settings.sqlite_url = original_sqlite_url
+
+
+def test_create_annotation_and_return_it_in_library(tmp_path) -> None:
+    original_dir = settings.local_image_dir
+    original_sqlite_url = settings.sqlite_url
+    settings.local_image_dir = str(tmp_path / "images")
+    settings.sqlite_url = f"sqlite:///{tmp_path}/test.db"
+
+    try:
+        upload_response = client.post(
+            "/api/images/upload",
+            files={"file": ("linen-shirt.jpg", BytesIO(b"img-bytes"), "image/jpeg")},
+        )
+        image_id = upload_response.json()["id"]
+
+        annotation_response = client.post(
+            f"/api/images/{image_id}/annotations",
+            json={
+                "kind": "note",
+                "content": "Neckline detailing is strong enough to revisit for resort.",
+                "author": "Alex",
+            },
+        )
+        list_response = client.get("/api/images")
+
+        assert annotation_response.status_code == 200
+        annotation_payload = annotation_response.json()
+        assert annotation_payload["image_id"] == image_id
+        assert annotation_payload["author"] == "Alex"
+
+        assert list_response.status_code == 200
+        list_payload = list_response.json()
+        assert len(list_payload[0]["annotations"]) == 1
+        assert list_payload[0]["annotations"][0]["content"].startswith("Neckline detailing")
+    finally:
+        settings.local_image_dir = original_dir
+        settings.sqlite_url = original_sqlite_url

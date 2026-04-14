@@ -22,6 +22,16 @@ export type ImageListItem = {
   captured_at?: string | null;
   created_at: string;
   ai_metadata?: ClassificationResult | null;
+  annotations: AnnotationItem[];
+};
+
+export type AnnotationItem = {
+  id: number;
+  image_id: number;
+  kind: string;
+  content: string;
+  author?: string | null;
+  created_at: string;
 };
 
 export type FilterOption = {

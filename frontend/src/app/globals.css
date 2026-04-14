@@ -413,6 +413,28 @@ label,
   line-height: 1.6;
 }
 
+.annotation-composer {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.annotation-input {
+  width: 100%;
+  resize: vertical;
+  min-height: 92px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.52);
+  color: var(--ink);
+  font: inherit;
+}
+
+.annotation-button {
+  justify-self: start;
+}
+
 @media (max-width: 980px) {
   .hero,
   .content-grid,
