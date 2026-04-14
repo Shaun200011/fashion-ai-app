@@ -89,6 +89,9 @@ function getDesignerNote(image: ImageListItem): string {
 
 function getDisplayTitle(filename: string): string {
   const stem = filename.replace(/\.[^/.]+$/, "");
+  if (/^\d+$/.test(stem)) {
+    return "Curated fashion reference";
+  }
   const cleaned = stem
     .replace(/[_-]+/g, " ")
     .replace(/\s+/g, " ")
