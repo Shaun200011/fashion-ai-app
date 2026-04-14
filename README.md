@@ -46,9 +46,23 @@ uvicorn app.main:app --reload
 
 The frontend will be added next in `frontend/`.
 
+Frontend setup:
+
+```bash
+cd /Users/yuxiang/fashion-ai-app/frontend
+npm install
+npm run dev
+```
+
 ## Current Backend Endpoints
 
 - `GET /api/health`: simple readiness check
 - `POST /api/images/upload`: accepts a multipart image upload, stores the file locally, and creates placeholder AI metadata
 - `GET /api/images`: returns uploaded images with attached AI metadata
 - `POST /api/images/{image_id}/classify`: reruns placeholder classification for a stored image
+
+## Current Frontend Status
+
+- Next.js app skeleton with App Router structure
+- Editorial landing page tailored to the fashion inspiration use case
+- Shared TypeScript types and backend API client placeholders
