@@ -1,0 +1,32 @@
+[
+  {
+    "filename": "02022 0377 Equality March 2022 in Krak\u00f3w.jpg",
+    "source_page": "https://commons.wikimedia.org/wiki/File:02022_0377_Equality_March_2022_in_Krak\u00f3w.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/02022_0377_Equality_March_2022_in_Krak%C3%B3w.jpg",
+    "expected": {}
+  },
+  {
+    "filename": "02024 0843 Street fashion.jpg",
+    "source_page": "https://commons.wikimedia.org/wiki/File:02024_0843_Street_fashion.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/49/02024_0843_Street_fashion.jpg",
+    "expected": {}
+  },
+  {
+    "filename": "18-11-2021 TRIESTE XT2 23 F2 -5.jpg",
+    "source_page": "https://commons.wikimedia.org/wiki/File:18-11-2021_TRIESTE_XT2_23_F2_-5.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/18-11-2021_TRIESTE_XT2_23_F2_-5.jpg/960px-18-11-2021_TRIESTE_XT2_23_F2_-5.jpg",
+    "expected": {}
+  },
+  {
+    "filename": "18-11-2021 TRIESTE XT2 23 F2.jpg",
+    "source_page": "https://commons.wikimedia.org/wiki/File:18-11-2021_TRIESTE_XT2_23_F2.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/18-11-2021_TRIESTE_XT2_23_F2.jpg/960px-18-11-2021_TRIESTE_XT2_23_F2.jpg",
+    "expected": {}
+  },
+  {
+    "filename": "Street fashion 2019 .jpg",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Street_fashion_2019_.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/98/Street_fashion_2019_.jpg",
+    "expected": {}
+  }
+]

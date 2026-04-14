@@ -1,0 +1,22 @@
+[
+  {
+    "filename": "linen-shirt.jpg",
+    "expected": {
+      "garment_type": "top",
+      "style": "contemporary",
+      "material": "linen",
+      "occasion": "daywear",
+      "season": "summer"
+    }
+  },
+  {
+    "filename": "market-jacket.jpg",
+    "expected": {
+      "garment_type": "outerwear",
+      "style": "contemporary",
+      "material": "cotton",
+      "occasion": "daywear",
+      "season": "transitional"
+    }
+  }
+]
