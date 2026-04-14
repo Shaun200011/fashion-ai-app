@@ -1,3 +1,5 @@
+from typing import Optional
+
 from pydantic import BaseModel
 
 
@@ -8,7 +10,11 @@ class Settings(BaseModel):
     local_image_dir: str = "data/images"
     sqlite_url: str = "sqlite:///data/fashion_ai_app.db"
     cors_origins: list[str] = ["http://localhost:3000", "http://127.0.0.1:3000"]
-    ai_provider: str = "mock"
+    ai_provider: str = "auto"
+    openai_api_key: Optional[str] = None
+    openai_base_url: str = "https://api.openai.com/v1/responses"
+    openai_model: str = "gpt-4.1-mini"
+    openai_timeout_seconds: int = 45
 
 
 settings = Settings()

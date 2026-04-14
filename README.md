@@ -76,4 +76,15 @@ npm run dev
 
 - The backend now routes classification through a provider abstraction instead of embedding placeholder logic directly in route handlers
 - Provider output is normalized through a dedicated parser before persistence
-- The current provider is still mock-based, which keeps the app local-first while preparing for a real multimodal model integration
+- `AI_PROVIDER=auto` will attempt a real OpenAI-backed provider when `OPENAI_API_KEY` is configured, then fall back to the mock provider when local setup is incomplete
+
+## Environment Variables
+
+For local development, the app works without any API keys.
+
+If you want to enable the real provider path later, set:
+
+```bash
+export AI_PROVIDER=auto
+export OPENAI_API_KEY=your_api_key_here
+```
