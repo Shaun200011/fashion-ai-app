@@ -65,4 +65,5 @@ npm run dev
 
 - Next.js app skeleton with App Router structure
 - Editorial landing page tailored to the fashion inspiration use case
-- Shared TypeScript types and backend API client placeholders
+- Shared TypeScript types and backend API client helpers
+- Homepage library reads live image data and supports basic browser-based upload

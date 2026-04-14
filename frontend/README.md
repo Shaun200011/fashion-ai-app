@@ -12,6 +12,7 @@ Next.js app for the design-facing workflow.
 ## Current Status
 
 - The homepage loads live data from `GET /api/images` when the backend is running
+- The homepage can upload a new image to `POST /api/images/upload`
 - If the backend is unavailable, the UI falls back to editorial sample content so design work can continue
 
 ## Local Setup

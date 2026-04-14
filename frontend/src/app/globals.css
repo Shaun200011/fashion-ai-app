@@ -187,11 +187,16 @@ label,
   place-items: center;
   text-align: center;
   padding: 24px;
+  cursor: pointer;
 }
 
 .upload-zone p {
   margin: 0 0 6px;
   font-size: 1.2rem;
+}
+
+.file-input {
+  display: none;
 }
 
 .meta-row {
@@ -201,7 +206,7 @@ label,
   margin-top: 18px;
 }
 
-.fake-input,
+.text-input,
 .search-box,
 .filter-pill {
   border-radius: 18px;
@@ -209,9 +214,29 @@ label,
   background: rgba(255, 255, 255, 0.52);
 }
 
-.fake-input {
+.text-input {
   margin-top: 8px;
   padding: 14px 16px;
+  width: 100%;
+  color: var(--ink);
+  font: inherit;
+}
+
+.upload-form {
+  margin-top: 2px;
+}
+
+.upload-actions {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-top: 18px;
+}
+
+.feedback-message {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
 }
 
 .filter-list {
@@ -243,6 +268,15 @@ label,
 
 .library-section {
   margin-top: 32px;
+}
+
+.library-banner {
+  margin: 0 0 18px;
+  padding: 14px 18px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.52);
+  color: var(--muted);
 }
 
 .section-header {
@@ -379,5 +413,10 @@ label,
   .hero-actions {
     grid-template-columns: 1fr;
     display: grid;
+  }
+
+  .upload-actions {
+    align-items: start;
+    flex-direction: column;
   }
 }
