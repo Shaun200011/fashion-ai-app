@@ -1,32 +1,2234 @@
 [
   {
-    "filename": "02022 0377 Equality March 2022 in Krak\u00f3w.jpg",
-    "source_page": "https://commons.wikimedia.org/wiki/File:02022_0377_Equality_March_2022_in_Krak\u00f3w.jpg",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/02022_0377_Equality_March_2022_in_Krak%C3%B3w.jpg",
-    "expected": {}
+    "filename": "5792.jpg",
+    "source_id": "5792",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Tops",
+      "season": "spring",
+      "occasion": "casual",
+      "base_colour": "white",
+      "style": "casual"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Tops",
+      "baseColour": "White",
+      "season": "Spring",
+      "usage": "Casual",
+      "productDisplayName": "Jealous 21 Women Multi Color Top"
+    }
   },
   {
-    "filename": "02024 0843 Street fashion.jpg",
-    "source_page": "https://commons.wikimedia.org/wiki/File:02024_0843_Street_fashion.jpg",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/49/02024_0843_Street_fashion.jpg",
-    "expected": {}
+    "filename": "27434.jpg",
+    "source_id": "27434",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Bra",
+      "season": "fall",
+      "occasion": "sports",
+      "base_colour": "black"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Innerwear",
+      "articleType": "Bra",
+      "baseColour": "Black",
+      "season": "Fall",
+      "usage": "Sports",
+      "productDisplayName": "Jockey Black Xena Sports Bra 1378"
+    }
   },
   {
-    "filename": "18-11-2021 TRIESTE XT2 23 F2 -5.jpg",
-    "source_page": "https://commons.wikimedia.org/wiki/File:18-11-2021_TRIESTE_XT2_23_F2_-5.jpg",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/18-11-2021_TRIESTE_XT2_23_F2_-5.jpg/960px-18-11-2021_TRIESTE_XT2_23_F2_-5.jpg",
-    "expected": {}
+    "filename": "30917.jpg",
+    "source_id": "30917",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Trousers",
+      "season": "summer",
+      "occasion": "ethnic",
+      "base_colour": "black"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Trousers",
+      "baseColour": "Black",
+      "season": "Summer",
+      "usage": "Ethnic",
+      "productDisplayName": "Fabindia Women Black Harem Pants"
+    }
   },
   {
-    "filename": "18-11-2021 TRIESTE XT2 23 F2.jpg",
-    "source_page": "https://commons.wikimedia.org/wiki/File:18-11-2021_TRIESTE_XT2_23_F2.jpg",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/18-11-2021_TRIESTE_XT2_23_F2.jpg/960px-18-11-2021_TRIESTE_XT2_23_F2.jpg",
-    "expected": {}
+    "filename": "27433.jpg",
+    "source_id": "27433",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Bra",
+      "season": "winter",
+      "occasion": "sports",
+      "base_colour": "grey melange"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Innerwear",
+      "articleType": "Bra",
+      "baseColour": "Grey Melange",
+      "season": "Winter",
+      "usage": "Sports",
+      "productDisplayName": "Jockey Women Grey Melange Eva Sports Bra"
+    }
   },
   {
-    "filename": "Street fashion 2019 .jpg",
-    "source_page": "https://commons.wikimedia.org/wiki/File:Street_fashion_2019_.jpg",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/98/Street_fashion_2019_.jpg",
-    "expected": {}
+    "filename": "25895.jpg",
+    "source_id": "25895",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Camisoles",
+      "season": "summer",
+      "occasion": "casual",
+      "base_colour": "white"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Innerwear",
+      "articleType": "Camisoles",
+      "baseColour": "White",
+      "season": "Summer",
+      "usage": "Casual",
+      "productDisplayName": "Femella Women White Camisole 005G"
+    }
+  },
+  {
+    "filename": "39120.jpg",
+    "source_id": "39120",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Leggings",
+      "season": "fall",
+      "occasion": "casual",
+      "base_colour": "brown"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Leggings",
+      "baseColour": "Brown",
+      "season": "Fall",
+      "usage": "Casual",
+      "productDisplayName": "Aneri Women Brown Leggings"
+    }
+  },
+  {
+    "filename": "41349.jpg",
+    "source_id": "41349",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Jeans",
+      "season": "spring",
+      "occasion": "casual",
+      "base_colour": "blue",
+      "style": "casual"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Jeans",
+      "baseColour": "Blue",
+      "season": "Spring",
+      "usage": "Casual",
+      "productDisplayName": "Wrangler Men Blue Skanders Jeans"
+    }
+  },
+  {
+    "filename": "26258.jpg",
+    "source_id": "26258",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Track Pants",
+      "season": "summer",
+      "occasion": "sports",
+      "base_colour": "charcoal",
+      "style": "sporty"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Track Pants",
+      "baseColour": "Charcoal",
+      "season": "Summer",
+      "usage": "Sports",
+      "productDisplayName": "Proline Men Charcoal Grey Track Pants"
+    }
+  },
+  {
+    "filename": "12163.jpg",
+    "source_id": "12163",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Leggings",
+      "season": "fall",
+      "occasion": "ethnic",
+      "base_colour": "purple"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Leggings",
+      "baseColour": "Purple",
+      "season": "Fall",
+      "usage": "Ethnic",
+      "productDisplayName": "Aurelia Women Solid Purple Leggings"
+    }
+  },
+  {
+    "filename": "19855.jpg",
+    "source_id": "19855",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Jackets",
+      "season": "winter",
+      "occasion": "casual",
+      "base_colour": "navy blue"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Jackets",
+      "baseColour": "Navy Blue",
+      "season": "Winter",
+      "usage": "Casual",
+      "productDisplayName": "U.S. Polo Assn. Men Solid Navy Blue Jackets"
+    }
+  },
+  {
+    "filename": "7932.jpg",
+    "source_id": "7932",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Lounge Pants",
+      "season": "fall",
+      "occasion": "sports",
+      "base_colour": "black"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Loungewear and Nightwear",
+      "articleType": "Lounge Pants",
+      "baseColour": "Black",
+      "season": "Fall",
+      "usage": "Sports",
+      "productDisplayName": "Puma Women's Jersey Black Track Pant"
+    }
+  },
+  {
+    "filename": "15039.jpg",
+    "source_id": "15039",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Jackets",
+      "season": "fall",
+      "occasion": "casual",
+      "base_colour": "pink"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Jackets",
+      "baseColour": "Pink",
+      "season": "Fall",
+      "usage": "Casual",
+      "productDisplayName": "ADIDAS Women Stripes Pink Jackets"
+    }
+  },
+  {
+    "filename": "43482.jpg",
+    "source_id": "43482",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Shirts",
+      "season": "summer",
+      "occasion": "casual",
+      "base_colour": "black",
+      "style": "casual"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Shirts",
+      "baseColour": "Black",
+      "season": "Summer",
+      "usage": "Casual",
+      "productDisplayName": "French Connection Men White & Black Shirt"
+    }
+  },
+  {
+    "filename": "38122.jpg",
+    "source_id": "38122",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Trousers",
+      "season": "spring",
+      "occasion": "smart casual",
+      "base_colour": "khaki"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Trousers",
+      "baseColour": "Khaki",
+      "season": "Spring",
+      "usage": "Smart Casual",
+      "productDisplayName": "Allen Solly Men Khaki Chino Trousers"
+    }
+  },
+  {
+    "filename": "45102.jpg",
+    "source_id": "45102",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Shapewear",
+      "season": "winter",
+      "occasion": "casual",
+      "base_colour": "black"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Innerwear",
+      "articleType": "Shapewear",
+      "baseColour": "Black",
+      "season": "Winter",
+      "usage": "Casual",
+      "productDisplayName": "Bwitch Women Black Xtra Slim Shapewear"
+    }
+  },
+  {
+    "filename": "35888.jpg",
+    "source_id": "35888",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Clothing Set",
+      "season": "summer",
+      "occasion": "casual",
+      "base_colour": "red"
+    },
+    "source_metadata": {
+      "gender": "Boys",
+      "masterCategory": "Apparel",
+      "subCategory": "Apparel Set",
+      "articleType": "Clothing Set",
+      "baseColour": "Red",
+      "season": "Summer",
+      "usage": "Casual",
+      "productDisplayName": "Jungle Book Boys Baby Red Clothing Set"
+    }
+  },
+  {
+    "filename": "50386.jpg",
+    "source_id": "50386",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Salwar and Dupatta",
+      "season": "summer",
+      "occasion": "ethnic",
+      "base_colour": "turquoise blue"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Salwar and Dupatta",
+      "baseColour": "Turquoise Blue",
+      "season": "Summer",
+      "usage": "Ethnic",
+      "productDisplayName": "Vishudh Women Turquoise Blue Salwar and Dupatta"
+    }
+  },
+  {
+    "filename": "26133.jpg",
+    "source_id": "26133",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Trousers",
+      "season": "summer",
+      "occasion": "formal",
+      "base_colour": "grey"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Trousers",
+      "baseColour": "Grey",
+      "season": "Summer",
+      "usage": "Formal",
+      "productDisplayName": "John Miller Men Striped Grey Trousers"
+    }
+  },
+  {
+    "filename": "26862.jpg",
+    "source_id": "26862",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Waistcoat",
+      "season": "summer",
+      "occasion": "casual",
+      "base_colour": "blue"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Waistcoat",
+      "baseColour": "Blue",
+      "season": "Summer",
+      "usage": "Casual",
+      "productDisplayName": "Jealous 21 Women Washed Blue Waistcoat"
+    }
+  },
+  {
+    "filename": "2283.jpg",
+    "source_id": "2283",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Tshirts",
+      "season": "spring",
+      "occasion": "sports",
+      "base_colour": "black",
+      "style": "casual"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Tshirts",
+      "baseColour": "Black",
+      "season": "Spring",
+      "usage": "Sports",
+      "productDisplayName": "Nike Men Poly Black T-shirt"
+    }
+  },
+  {
+    "filename": "11319.jpg",
+    "source_id": "11319",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Capris",
+      "season": "fall",
+      "occasion": "casual",
+      "base_colour": "blue"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Capris",
+      "baseColour": "Blue",
+      "season": "Fall",
+      "usage": "Casual",
+      "productDisplayName": "United Colors of Benetton Women Washed Blue Capris"
+    }
+  },
+  {
+    "filename": "19821.jpg",
+    "source_id": "19821",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Sweaters",
+      "season": "winter",
+      "occasion": "casual",
+      "base_colour": "off white"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Sweaters",
+      "baseColour": "Off White",
+      "season": "Winter",
+      "usage": "Casual",
+      "productDisplayName": "U.S. Polo Assn. Men Solid Off White Sweater"
+    }
+  },
+  {
+    "filename": "14619.jpg",
+    "source_id": "14619",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Stockings",
+      "season": "summer",
+      "occasion": "casual",
+      "base_colour": "grey"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Stockings",
+      "baseColour": "Grey",
+      "season": "Summer",
+      "usage": "Casual",
+      "productDisplayName": "United Colors of Benetton Women Solid Grey Stockings"
+    }
+  },
+  {
+    "filename": "2188.jpg",
+    "source_id": "2188",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Swimwear",
+      "season": "summer",
+      "occasion": "sports",
+      "base_colour": "black"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Apparel Set",
+      "articleType": "Swimwear",
+      "baseColour": "Black",
+      "season": "Summer",
+      "usage": "Sports",
+      "productDisplayName": "ADIDAS Women Stripe Black Swimming Cap"
+    }
+  },
+  {
+    "filename": "14539.jpg",
+    "source_id": "14539",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Kurtis",
+      "season": "fall",
+      "occasion": "ethnic",
+      "base_colour": "maroon",
+      "style": "ethnic"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Kurtis",
+      "baseColour": "Maroon",
+      "season": "Fall",
+      "usage": "Ethnic",
+      "productDisplayName": "Vishudh Women Flower Print Maroon Kurtis"
+    }
+  },
+  {
+    "filename": "30737.jpg",
+    "source_id": "30737",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Waistcoat",
+      "season": "summer",
+      "occasion": "ethnic",
+      "base_colour": "red"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Waistcoat",
+      "baseColour": "Red",
+      "season": "Summer",
+      "usage": "Ethnic",
+      "productDisplayName": "Fabindia Men Red Silk Sleeveless Waistcoat"
+    }
+  },
+  {
+    "filename": "51056.jpg",
+    "source_id": "51056",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Briefs",
+      "season": "fall",
+      "occasion": "casual",
+      "base_colour": "pink"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Innerwear",
+      "articleType": "Briefs",
+      "baseColour": "Pink",
+      "season": "Fall",
+      "usage": "Casual",
+      "productDisplayName": "Enamor Women Pink Dress Up 75 Briefs"
+    }
+  },
+  {
+    "filename": "17946.jpg",
+    "source_id": "17946",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Track Pants",
+      "season": "fall",
+      "occasion": "sports",
+      "base_colour": "navy blue",
+      "style": "sporty"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Track Pants",
+      "baseColour": "Navy Blue",
+      "season": "Fall",
+      "usage": "Sports",
+      "productDisplayName": "Puma Men South Africa  Navy Blue Track Pant"
+    }
+  },
+  {
+    "filename": "20225.jpg",
+    "source_id": "20225",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Sweaters",
+      "season": "fall",
+      "occasion": "casual",
+      "base_colour": "red"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Sweaters",
+      "baseColour": "Red",
+      "season": "Fall",
+      "usage": "Casual",
+      "productDisplayName": "Wrangler Women Felt Red Sweater"
+    }
+  },
+  {
+    "filename": "54894.jpg",
+    "source_id": "54894",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Lounge Pants",
+      "season": "summer",
+      "occasion": "casual",
+      "base_colour": "green"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Loungewear and Nightwear",
+      "articleType": "Lounge Pants",
+      "baseColour": "Green",
+      "season": "Summer",
+      "usage": "Casual",
+      "productDisplayName": "Do U Speak Green Men Green Lounge Pants"
+    }
+  },
+  {
+    "filename": "20039.jpg",
+    "source_id": "20039",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Tights",
+      "season": "fall",
+      "occasion": "casual",
+      "base_colour": "olive"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Tights",
+      "baseColour": "Olive",
+      "season": "Fall",
+      "usage": "Casual",
+      "productDisplayName": "United Colors of Benetton Women Olive Floral Design Tights"
+    }
+  },
+  {
+    "filename": "7429.jpg",
+    "source_id": "7429",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Kurtas",
+      "season": "summer",
+      "occasion": "casual",
+      "base_colour": "pink",
+      "style": "ethnic"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Kurtas",
+      "baseColour": "Pink",
+      "season": "Summer",
+      "usage": "Casual",
+      "productDisplayName": "W Women's Round Neck Sleeveless Pink Top"
+    }
+  },
+  {
+    "filename": "41889.jpg",
+    "source_id": "41889",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Jeans",
+      "season": "winter",
+      "occasion": "casual",
+      "base_colour": "blue",
+      "style": "casual"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Jeans",
+      "baseColour": "Blue",
+      "season": "Winter",
+      "usage": "Casual",
+      "productDisplayName": "Flying Machine Men Blue Slim Fit Mid-Rise Clean Look Jeans"
+    }
+  },
+  {
+    "filename": "58507.jpg",
+    "source_id": "58507",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Shrug",
+      "season": "summer",
+      "occasion": "casual",
+      "base_colour": "white"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Shrug",
+      "baseColour": "White",
+      "season": "Summer",
+      "usage": "Casual",
+      "productDisplayName": "Tonga Women Coffee Brown Shrug"
+    }
+  },
+  {
+    "filename": "27292.jpg",
+    "source_id": "27292",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Kurtas",
+      "season": "summer",
+      "occasion": "ethnic",
+      "base_colour": "navy blue",
+      "style": "ethnic"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Kurtas",
+      "baseColour": "Navy Blue",
+      "season": "Summer",
+      "usage": "Ethnic",
+      "productDisplayName": "Mother Earth Women Printed Navy Blue Kurta"
+    }
+  },
+  {
+    "filename": "30797.jpg",
+    "source_id": "30797",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Shirts",
+      "season": "summer",
+      "occasion": "ethnic",
+      "base_colour": "black",
+      "style": "casual"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Shirts",
+      "baseColour": "Black",
+      "season": "Summer",
+      "usage": "Ethnic",
+      "productDisplayName": "Fabindia Men Hand Block Printed Black Shirt"
+    }
+  },
+  {
+    "filename": "44680.jpg",
+    "source_id": "44680",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Tops",
+      "season": "summer",
+      "occasion": "party",
+      "base_colour": "black",
+      "style": "casual"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Tops",
+      "baseColour": "Black",
+      "season": "Summer",
+      "usage": "Party",
+      "productDisplayName": "Wills Lifestyle Women Black Jaydon Top"
+    }
+  },
+  {
+    "filename": "37894.jpg",
+    "source_id": "37894",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Tights",
+      "season": "summer",
+      "occasion": "casual",
+      "base_colour": "black"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Tights",
+      "baseColour": "Black",
+      "season": "Summer",
+      "usage": "Casual",
+      "productDisplayName": "Happy Socks Women Black & Grey Tights"
+    }
+  },
+  {
+    "filename": "33246.jpg",
+    "source_id": "33246",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Shirts",
+      "season": "spring",
+      "occasion": "formal",
+      "base_colour": "lavender",
+      "style": "casual"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Shirts",
+      "baseColour": "Lavender",
+      "season": "Spring",
+      "usage": "Formal",
+      "productDisplayName": "Arrow Men Lavender Unstainable Slim Fit Shirt"
+    }
+  },
+  {
+    "filename": "52023.jpg",
+    "source_id": "52023",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Jackets",
+      "season": "summer",
+      "occasion": "travel",
+      "base_colour": "black"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Jackets",
+      "baseColour": "Black",
+      "season": "Summer",
+      "usage": "Travel",
+      "productDisplayName": "Just Natural Unisex Black Photographers Jacket"
+    }
+  },
+  {
+    "filename": "16338.jpg",
+    "source_id": "16338",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Shirts",
+      "season": "fall",
+      "occasion": "formal",
+      "base_colour": "blue",
+      "style": "casual"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Shirts",
+      "baseColour": "Blue",
+      "season": "Fall",
+      "usage": "Formal",
+      "productDisplayName": "Peter England Men Stripes Blue Shirt"
+    }
+  },
+  {
+    "filename": "3054.jpg",
+    "source_id": "3054",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Tshirts",
+      "season": "summer",
+      "occasion": "formal",
+      "base_colour": "blue",
+      "style": "casual"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Tshirts",
+      "baseColour": "Blue",
+      "season": "Summer",
+      "usage": "Formal",
+      "productDisplayName": "Tantra Men's Who Farted Blue T-shirt"
+    }
+  },
+  {
+    "filename": "57418.jpg",
+    "source_id": "57418",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Robe",
+      "season": "winter",
+      "occasion": "casual",
+      "base_colour": "black"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Loungewear and Nightwear",
+      "articleType": "Robe",
+      "baseColour": "Black",
+      "season": "Winter",
+      "usage": "Casual",
+      "productDisplayName": "Amante Black Robe"
+    }
+  },
+  {
+    "filename": "17931.jpg",
+    "source_id": "17931",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Tights",
+      "season": "summer",
+      "occasion": "sports",
+      "base_colour": "black"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Tights",
+      "baseColour": "Black",
+      "season": "Summer",
+      "usage": "Sports",
+      "productDisplayName": "Nike Men Training Black Tights"
+    }
+  },
+  {
+    "filename": "28455.jpg",
+    "source_id": "28455",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Skirts",
+      "season": "summer",
+      "occasion": "sports",
+      "base_colour": "black"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Skirts",
+      "baseColour": "Black",
+      "season": "Summer",
+      "usage": "Sports",
+      "productDisplayName": "Urban Yoga Women Black Skirt With Leggings"
+    }
+  },
+  {
+    "filename": "27418.jpg",
+    "source_id": "27418",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Capris",
+      "season": "winter",
+      "occasion": "casual",
+      "base_colour": "red"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Capris",
+      "baseColour": "Red",
+      "season": "Winter",
+      "usage": "Casual",
+      "productDisplayName": "Jockey Women Red Relaxed Capris"
+    }
+  },
+  {
+    "filename": "52415.jpg",
+    "source_id": "52415",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Night suits",
+      "season": "winter",
+      "occasion": "casual",
+      "base_colour": "pink"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Loungewear and Nightwear",
+      "articleType": "Night suits",
+      "baseColour": "Pink",
+      "season": "Winter",
+      "usage": "Casual",
+      "productDisplayName": "Red Rose Pink Pyjama Set"
+    }
+  },
+  {
+    "filename": "40184.jpg",
+    "source_id": "40184",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Kurtis",
+      "season": "summer",
+      "occasion": "ethnic",
+      "base_colour": "pink",
+      "style": "ethnic"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Kurtis",
+      "baseColour": "Pink",
+      "season": "Summer",
+      "usage": "Ethnic",
+      "productDisplayName": "Mumbai Slang Women Floral Pink Kurti"
+    }
+  },
+  {
+    "filename": "19167.jpg",
+    "source_id": "19167",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Tshirts",
+      "season": "summer",
+      "occasion": "casual",
+      "base_colour": "red",
+      "style": "casual"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Tshirts",
+      "baseColour": "Red",
+      "season": "Summer",
+      "usage": "Casual",
+      "productDisplayName": "United Colors of Benetton Men Stripes Red Polo Tshirt"
+    }
+  },
+  {
+    "filename": "19536.jpg",
+    "source_id": "19536",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Sweaters",
+      "season": "summer",
+      "occasion": "casual",
+      "base_colour": "purple"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Sweaters",
+      "baseColour": "Purple",
+      "season": "Summer",
+      "usage": "Casual",
+      "productDisplayName": "United Colors of Benetton Men Solid Purple Sweater"
+    }
+  },
+  {
+    "filename": "2122.jpg",
+    "source_id": "2122",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Tops",
+      "season": "winter",
+      "occasion": "casual",
+      "base_colour": "black",
+      "style": "casual"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Tops",
+      "baseColour": "Black",
+      "season": "Winter",
+      "usage": "Casual",
+      "productDisplayName": "Lee Women Black Top"
+    }
+  },
+  {
+    "filename": "34998.jpg",
+    "source_id": "34998",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Sarees",
+      "season": "summer",
+      "occasion": "ethnic",
+      "base_colour": "black",
+      "style": "ethnic"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Saree",
+      "articleType": "Sarees",
+      "baseColour": "Black",
+      "season": "Summer",
+      "usage": "Ethnic",
+      "productDisplayName": "Fabindia H& Printed Black Cotton Silk Sari"
+    }
+  },
+  {
+    "filename": "40110.jpg",
+    "source_id": "40110",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Tracksuits",
+      "season": "summer",
+      "occasion": "casual",
+      "base_colour": "blue"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Tracksuits",
+      "baseColour": "Blue",
+      "season": "Summer",
+      "usage": "Casual",
+      "productDisplayName": "ADIDAS Men Blue Tracksuit"
+    }
+  },
+  {
+    "filename": "48480.jpg",
+    "source_id": "48480",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Dresses",
+      "season": "winter",
+      "occasion": "party",
+      "base_colour": "black",
+      "style": "contemporary"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Dress",
+      "articleType": "Dresses",
+      "baseColour": "Black",
+      "season": "Winter",
+      "usage": "Party",
+      "productDisplayName": "French Connection Women Black Dress"
+    }
+  },
+  {
+    "filename": "48097.jpg",
+    "source_id": "48097",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Trousers",
+      "season": "winter",
+      "occasion": "casual",
+      "base_colour": "green"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Trousers",
+      "baseColour": "Green",
+      "season": "Winter",
+      "usage": "Casual",
+      "productDisplayName": "French Connection Women Green Trousers"
+    }
+  },
+  {
+    "filename": "26371.jpg",
+    "source_id": "26371",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Shrug",
+      "season": "summer",
+      "occasion": "casual",
+      "base_colour": "pink"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Shrug",
+      "baseColour": "Pink",
+      "season": "Summer",
+      "usage": "Casual",
+      "productDisplayName": "Arrow Woman Check Pink Shirt"
+    }
+  },
+  {
+    "filename": "57894.jpg",
+    "source_id": "57894",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Leggings",
+      "season": "fall",
+      "occasion": "ethnic",
+      "base_colour": "navy blue"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Leggings",
+      "baseColour": "Navy Blue",
+      "season": "Fall",
+      "usage": "Ethnic",
+      "productDisplayName": "Femella Women Navy Blue Leggings"
+    }
+  },
+  {
+    "filename": "47049.jpg",
+    "source_id": "47049",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Salwar",
+      "season": "fall",
+      "occasion": "ethnic",
+      "base_colour": "purple"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Salwar",
+      "baseColour": "Purple",
+      "season": "Fall",
+      "usage": "Ethnic",
+      "productDisplayName": "Shree Women Red & Blue Jodhpuri Salwar"
+    }
+  },
+  {
+    "filename": "52420.jpg",
+    "source_id": "52420",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Nightdress",
+      "season": "winter",
+      "occasion": "casual",
+      "base_colour": "cream"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Loungewear and Nightwear",
+      "articleType": "Nightdress",
+      "baseColour": "Cream",
+      "season": "Winter",
+      "usage": "Casual",
+      "productDisplayName": "Red Rose Women Cream & Blue Nightdress"
+    }
+  },
+  {
+    "filename": "58654.jpg",
+    "source_id": "58654",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Kurtas",
+      "season": "summer",
+      "occasion": "ethnic",
+      "base_colour": "red",
+      "style": "ethnic"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Kurtas",
+      "baseColour": "Red",
+      "season": "Summer",
+      "usage": "Ethnic",
+      "productDisplayName": "ALayna Women Red Kurta"
+    }
+  },
+  {
+    "filename": "19061.jpg",
+    "source_id": "19061",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Kurtis",
+      "season": "fall",
+      "occasion": "ethnic",
+      "base_colour": "red",
+      "style": "ethnic"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Kurtis",
+      "baseColour": "Red",
+      "season": "Fall",
+      "usage": "Ethnic",
+      "productDisplayName": "Aurelia Women Printed Red Kurti"
+    }
+  },
+  {
+    "filename": "32388.jpg",
+    "source_id": "32388",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Sweaters",
+      "season": "summer",
+      "occasion": "casual",
+      "base_colour": "beige"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Sweaters",
+      "baseColour": "Beige",
+      "season": "Summer",
+      "usage": "Casual",
+      "productDisplayName": "Arrow Woman Beige Cardigan"
+    }
+  },
+  {
+    "filename": "27962.jpg",
+    "source_id": "27962",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Trunk",
+      "season": "fall",
+      "occasion": "casual",
+      "base_colour": "white"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Innerwear",
+      "articleType": "Trunk",
+      "baseColour": "White",
+      "season": "Fall",
+      "usage": "Casual",
+      "productDisplayName": "Jockey Men White SPORT PERFORMANCE Trunks SP08"
+    }
+  },
+  {
+    "filename": "50987.jpg",
+    "source_id": "50987",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Briefs",
+      "season": "fall",
+      "occasion": "casual",
+      "base_colour": "purple"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Innerwear",
+      "articleType": "Briefs",
+      "baseColour": "Purple",
+      "season": "Fall",
+      "usage": "Casual",
+      "productDisplayName": "Enamor Women Purple Dress Up 07 Briefs"
+    }
+  },
+  {
+    "filename": "8758.jpg",
+    "source_id": "8758",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Capris",
+      "season": "fall",
+      "occasion": "sports",
+      "base_colour": "black"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Capris",
+      "baseColour": "Black",
+      "season": "Fall",
+      "usage": "Sports",
+      "productDisplayName": "Puma Women Move Dance Black Capri"
+    }
+  },
+  {
+    "filename": "30803.jpg",
+    "source_id": "30803",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Shirts",
+      "season": "summer",
+      "occasion": "ethnic",
+      "base_colour": "blue",
+      "style": "casual"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Shirts",
+      "baseColour": "Blue",
+      "season": "Summer",
+      "usage": "Ethnic",
+      "productDisplayName": "Fabindia Men Blue Shirt"
+    }
+  },
+  {
+    "filename": "52479.jpg",
+    "source_id": "52479",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Baby Dolls",
+      "season": "winter",
+      "occasion": "casual",
+      "base_colour": "white"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Loungewear and Nightwear",
+      "articleType": "Baby Dolls",
+      "baseColour": "White",
+      "season": "Winter",
+      "usage": "Casual",
+      "productDisplayName": "Red Rose White Nightdress"
+    }
+  },
+  {
+    "filename": "32444.jpg",
+    "source_id": "32444",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Shorts",
+      "season": "winter",
+      "occasion": "sports",
+      "base_colour": "navy blue"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Shorts",
+      "baseColour": "Navy Blue",
+      "season": "Winter",
+      "usage": "Sports",
+      "productDisplayName": "ADIDAS Men Navy Blue Shorts"
+    }
+  },
+  {
+    "filename": "30821.jpg",
+    "source_id": "30821",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Churidar",
+      "season": "summer",
+      "occasion": "ethnic",
+      "base_colour": "beige"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Churidar",
+      "baseColour": "Beige",
+      "season": "Summer",
+      "usage": "Ethnic",
+      "productDisplayName": "Fabindia Women Beige Mangalgiri Churidar"
+    }
+  },
+  {
+    "filename": "44670.jpg",
+    "source_id": "44670",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Shirts",
+      "season": "summer",
+      "occasion": "smart casual",
+      "base_colour": "white",
+      "style": "casual"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Shirts",
+      "baseColour": "White",
+      "season": "Summer",
+      "usage": "Smart Casual",
+      "productDisplayName": "Wills Lifestyle Women Eliza White Shirt"
+    }
+  },
+  {
+    "filename": "38722.jpg",
+    "source_id": "38722",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Tunics",
+      "season": "summer",
+      "occasion": "ethnic",
+      "base_colour": "cream"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Tunics",
+      "baseColour": "Cream",
+      "season": "Summer",
+      "usage": "Ethnic",
+      "productDisplayName": "Global Desi Women Cream Tunic"
+    }
+  },
+  {
+    "filename": "47072.jpg",
+    "source_id": "47072",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Patiala",
+      "season": "fall",
+      "occasion": "ethnic",
+      "base_colour": "navy blue"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Patiala",
+      "baseColour": "Navy Blue",
+      "season": "Fall",
+      "usage": "Ethnic",
+      "productDisplayName": "Shree Women Navy Blue Printed Patiala"
+    }
+  },
+  {
+    "filename": "18713.jpg",
+    "source_id": "18713",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Skirts",
+      "season": "fall",
+      "occasion": "formal",
+      "base_colour": "grey"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Skirts",
+      "baseColour": "Grey",
+      "season": "Fall",
+      "usage": "Formal",
+      "productDisplayName": "Arrow Woman Solid Grey Skirt"
+    }
+  },
+  {
+    "filename": "24501.jpg",
+    "source_id": "24501",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Belts",
+      "season": "fall",
+      "occasion": "formal",
+      "base_colour": "brown"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Belts",
+      "baseColour": "Brown",
+      "season": "Fall",
+      "usage": "Formal",
+      "productDisplayName": "Pacific Gold Men Brown Leather Belt"
+    }
+  },
+  {
+    "filename": "58158.jpg",
+    "source_id": "58158",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Shrug",
+      "season": "fall",
+      "occasion": "casual",
+      "base_colour": "maroon"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Shrug",
+      "baseColour": "Maroon",
+      "season": "Fall",
+      "usage": "Casual",
+      "productDisplayName": "Latin Quarters Women Maroon Shrug"
+    }
+  },
+  {
+    "filename": "45086.jpg",
+    "source_id": "45086",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Night suits",
+      "season": "winter",
+      "occasion": "casual",
+      "base_colour": "pink"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Loungewear and Nightwear",
+      "articleType": "Night suits",
+      "baseColour": "Pink",
+      "season": "Winter",
+      "usage": "Casual",
+      "productDisplayName": "Bwitch Pink Orchid Pyjama Set"
+    }
+  },
+  {
+    "filename": "50655.jpg",
+    "source_id": "50655",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Lounge Shorts",
+      "season": "summer",
+      "occasion": "sports",
+      "base_colour": "grey melange"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Loungewear and Nightwear",
+      "articleType": "Lounge Shorts",
+      "baseColour": "Grey Melange",
+      "season": "Summer",
+      "usage": "Sports",
+      "productDisplayName": "Chromozome Men Grey Melange Lounge Shorts"
+    }
+  },
+  {
+    "filename": "31162.jpg",
+    "source_id": "31162",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Jeans",
+      "season": "summer",
+      "occasion": "casual",
+      "base_colour": "blue",
+      "style": "casual"
+    },
+    "source_metadata": {
+      "gender": "Unisex",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Jeans",
+      "baseColour": "Blue",
+      "season": "Summer",
+      "usage": "Casual",
+      "productDisplayName": "Gini and Jony Kids Unisex Blue Jeans"
+    }
+  },
+  {
+    "filename": "33787.jpg",
+    "source_id": "33787",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Shirts",
+      "season": "spring",
+      "occasion": "smart casual",
+      "base_colour": "brown",
+      "style": "casual"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Shirts",
+      "baseColour": "Brown",
+      "season": "Spring",
+      "usage": "Smart Casual",
+      "productDisplayName": "Van Heusen Men Brown Giza Cotton Shirt"
+    }
+  },
+  {
+    "filename": "52502.jpg",
+    "source_id": "52502",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Bath Robe",
+      "season": "winter",
+      "occasion": "casual",
+      "base_colour": "pink"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Loungewear and Nightwear",
+      "articleType": "Bath Robe",
+      "baseColour": "Pink",
+      "season": "Winter",
+      "usage": "Casual",
+      "productDisplayName": "Red Rose Pink & Purple Printed Bath Robe"
+    }
+  },
+  {
+    "filename": "27432.jpg",
+    "source_id": "27432",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Bra",
+      "season": "summer",
+      "occasion": "sports",
+      "base_colour": "black"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Innerwear",
+      "articleType": "Bra",
+      "baseColour": "Black",
+      "season": "Summer",
+      "usage": "Sports",
+      "productDisplayName": "Jockey Black Eva Sports Bra 1375"
+    }
+  },
+  {
+    "filename": "13754.jpg",
+    "source_id": "13754",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Shirts",
+      "season": "fall",
+      "occasion": "formal",
+      "base_colour": "white",
+      "style": "casual"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Shirts",
+      "baseColour": "White",
+      "season": "Fall",
+      "usage": "Formal",
+      "productDisplayName": "Belmonte Men Stripes White Shirts"
+    }
+  },
+  {
+    "filename": "27500.jpg",
+    "source_id": "27500",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Camisoles",
+      "season": "winter",
+      "occasion": "casual",
+      "base_colour": "blue"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Innerwear",
+      "articleType": "Camisoles",
+      "baseColour": "Blue",
+      "season": "Winter",
+      "usage": "Casual",
+      "productDisplayName": "Jockey Women Blue Camisole"
+    }
+  },
+  {
+    "filename": "15128.jpg",
+    "source_id": "15128",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Trousers",
+      "season": "winter",
+      "occasion": "formal",
+      "base_colour": "cream"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Trousers",
+      "baseColour": "Cream",
+      "season": "Winter",
+      "usage": "Formal",
+      "productDisplayName": "Arrow  Men Solid Cream Trousers"
+    }
+  },
+  {
+    "filename": "40498.jpg",
+    "source_id": "40498",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Camisoles",
+      "season": "summer",
+      "occasion": "casual",
+      "base_colour": "white"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Innerwear",
+      "articleType": "Camisoles",
+      "baseColour": "White",
+      "season": "Summer",
+      "usage": "Casual",
+      "productDisplayName": "Femella Women White Camisole"
+    }
+  },
+  {
+    "filename": "6532.jpg",
+    "source_id": "6532",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Skirts",
+      "season": "summer",
+      "occasion": "sports",
+      "base_colour": "pink"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Skirts",
+      "baseColour": "Pink",
+      "season": "Summer",
+      "usage": "Sports",
+      "productDisplayName": "Nike Women's Border Pink Skirt"
+    }
+  },
+  {
+    "filename": "15035.jpg",
+    "source_id": "15035",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Sweaters",
+      "season": "fall",
+      "occasion": "casual",
+      "base_colour": "purple"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Sweaters",
+      "baseColour": "Purple",
+      "season": "Fall",
+      "usage": "Casual",
+      "productDisplayName": "ADIDAS Women Stripes Purple Sweaters"
+    }
+  },
+  {
+    "filename": "30819.jpg",
+    "source_id": "30819",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Leggings",
+      "season": "summer",
+      "occasion": "ethnic",
+      "base_colour": "pink"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Leggings",
+      "baseColour": "Pink",
+      "season": "Summer",
+      "usage": "Ethnic",
+      "productDisplayName": "Fabindia Women Pink Leggings"
+    }
+  },
+  {
+    "filename": "22476.jpg",
+    "source_id": "22476",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Tshirts",
+      "season": "summer",
+      "occasion": "casual",
+      "base_colour": "blue",
+      "style": "casual"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Tshirts",
+      "baseColour": "Blue",
+      "season": "Summer",
+      "usage": "Casual",
+      "productDisplayName": "Timberland Men Blue T-shirt"
+    }
+  },
+  {
+    "filename": "21592.jpg",
+    "source_id": "21592",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Shorts",
+      "season": "fall",
+      "occasion": "sports",
+      "base_colour": "grey"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Shorts",
+      "baseColour": "Grey",
+      "season": "Fall",
+      "usage": "Sports",
+      "productDisplayName": "Artengo Men Solid Grey Short"
+    }
+  },
+  {
+    "filename": "12328.jpg",
+    "source_id": "12328",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Shirts",
+      "season": "winter",
+      "occasion": "formal",
+      "base_colour": "blue",
+      "style": "casual"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Shirts",
+      "baseColour": "Blue",
+      "season": "Winter",
+      "usage": "Formal",
+      "productDisplayName": "Genesis Blue Formal Shirt"
+    }
+  },
+  {
+    "filename": "42970.jpg",
+    "source_id": "42970",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Swimwear",
+      "season": "summer",
+      "occasion": "casual",
+      "base_colour": "black"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Swimwear",
+      "baseColour": "Black",
+      "season": "Summer",
+      "usage": "Casual",
+      "productDisplayName": "Amante Black Swimsuit WCSD04"
+    }
+  },
+  {
+    "filename": "26254.jpg",
+    "source_id": "26254",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Track Pants",
+      "season": "summer",
+      "occasion": "sports",
+      "base_colour": "charcoal",
+      "style": "sporty"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Track Pants",
+      "baseColour": "Charcoal",
+      "season": "Summer",
+      "usage": "Sports",
+      "productDisplayName": "Proline Men Charcoal Grey Track Pants"
+    }
+  },
+  {
+    "filename": "52021.jpg",
+    "source_id": "52021",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Lounge Tshirts",
+      "season": "summer",
+      "occasion": "casual",
+      "base_colour": "brown"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Loungewear and Nightwear",
+      "articleType": "Lounge Tshirts",
+      "baseColour": "Brown",
+      "season": "Summer",
+      "usage": "Casual",
+      "productDisplayName": "Inaya Women Lounge Top"
+    }
+  },
+  {
+    "filename": "32454.jpg",
+    "source_id": "32454",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Tshirts",
+      "season": "spring",
+      "occasion": "sports",
+      "base_colour": "white",
+      "style": "casual"
+    },
+    "source_metadata": {
+      "gender": "Men",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Tshirts",
+      "baseColour": "White",
+      "season": "Spring",
+      "usage": "Sports",
+      "productDisplayName": "ADIDAS Men White T-shirt"
+    }
+  },
+  {
+    "filename": "40432.jpg",
+    "source_id": "40432",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Skirts",
+      "season": "summer",
+      "occasion": "formal",
+      "base_colour": "black"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Skirts",
+      "baseColour": "Black",
+      "season": "Summer",
+      "usage": "Formal",
+      "productDisplayName": "Tonga Women Black Skirt"
+    }
+  },
+  {
+    "filename": "14876.jpg",
+    "source_id": "14876",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Stockings",
+      "season": "summer",
+      "occasion": "casual",
+      "base_colour": "grey"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Bottomwear",
+      "articleType": "Stockings",
+      "baseColour": "Grey",
+      "season": "Summer",
+      "usage": "Casual",
+      "productDisplayName": "United Colors of Benetton Women Solid Grey Stockings"
+    }
+  },
+  {
+    "filename": "27508.jpg",
+    "source_id": "27508",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Bra",
+      "season": "fall",
+      "occasion": "casual",
+      "base_colour": "black"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Innerwear",
+      "articleType": "Bra",
+      "baseColour": "Black",
+      "season": "Fall",
+      "usage": "Casual",
+      "productDisplayName": "Jockey Black T-shirt Bra SS 15"
+    }
+  },
+  {
+    "filename": "33029.jpg",
+    "source_id": "33029",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Kurtis",
+      "season": "summer",
+      "occasion": "ethnic",
+      "base_colour": "off white",
+      "style": "ethnic"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Topwear",
+      "articleType": "Kurtis",
+      "baseColour": "Off White",
+      "season": "Summer",
+      "usage": "Ethnic",
+      "productDisplayName": "Mother Earth Women Printed Off White Kurti"
+    }
+  },
+  {
+    "filename": "52499.jpg",
+    "source_id": "52499",
+    "source_page": "",
+    "image_url": "",
+    "expected": {
+      "garment_type": "Baby Dolls",
+      "season": "summer",
+      "occasion": "casual",
+      "base_colour": "black"
+    },
+    "source_metadata": {
+      "gender": "Women",
+      "masterCategory": "Apparel",
+      "subCategory": "Loungewear and Nightwear",
+      "articleType": "Baby Dolls",
+      "baseColour": "Black",
+      "season": "Summer",
+      "usage": "Casual",
+      "productDisplayName": "Red Rose Women Black Nightdress"
+    }
   }
 ]

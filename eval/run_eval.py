@@ -7,16 +7,16 @@ from app.services.classifier import classify_image
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_LABELS_PATH = PROJECT_ROOT / "eval" / "labels" / "sample_labels.json"
+DEFAULT_LABELS_PATH = PROJECT_ROOT / "eval" / "labels" / "candidate_labels.json"
 DEFAULT_DATASET_DIR = PROJECT_ROOT / "eval" / "dataset"
 DEFAULT_OUTPUT_PATH = PROJECT_ROOT / "eval" / "summary.md"
 
 EVAL_FIELDS = [
     "garment_type",
     "style",
-    "material",
     "occasion",
     "season",
+    "base_colour",
 ]
 
 

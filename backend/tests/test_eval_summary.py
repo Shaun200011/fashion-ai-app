@@ -8,12 +8,12 @@ def test_compute_accuracy_and_summary() -> None:
             expected={
                 "garment_type": "top",
                 "style": "contemporary",
-                "material": "linen",
+                "base_colour": "white",
             },
             predicted={
                 "garment_type": "top",
                 "style": "contemporary",
-                "material": "cotton",
+                "base_colour": "black",
             },
         )
     ]
@@ -22,6 +22,6 @@ def test_compute_accuracy_and_summary() -> None:
     summary = build_summary(results, scores)
 
     assert scores["garment_type"] == 1.0
-    assert scores["material"] == 0.0
+    assert scores["base_colour"] == 0.0
     assert "linen-shirt.jpg" in summary
     assert "Per-Attribute Accuracy" in summary

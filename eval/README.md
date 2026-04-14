@@ -6,7 +6,7 @@ This directory contains the labeled dataset format, evaluation script, and per-a
 
 - `dataset/`: place evaluation images here
 - `labels/sample_labels.json`: starter label format
-- `labels/candidate_labels.json`: generated candidate label manifest for local images
+- `labels/candidate_labels.json`: generated candidate label manifest for the current 100-image evaluation set
 - `run_eval.py`: runs the configured classifier against the labeled set
 - `summary.md`: generated accuracy summary
 - `scripts/bootstrap_labels.py`: scans `dataset/` and creates blank label entries
@@ -51,19 +51,21 @@ python eval/scripts/bootstrap_labels.py
 3. Open `eval/labels/candidate_labels.json` and fill the `expected` fields manually
 4. Run the evaluation script to generate `eval/summary.md`
 
+For this repository, the current `candidate_labels.json` already contains a 100-image mapped baseline sampled from the local fashion dataset.
+
 ## Recommended Manual Label Set
 
 For a fast and defensible take-home evaluation, prioritize:
 
 - `garment_type`
 - `style`
-- `material`
 - `occasion`
 - `season`
+- `base_colour`
 
 Suggested rules:
 
 - Leave uncertain fields blank instead of inventing a label
 - Use one canonical value per field
 - Keep `style` labels coarse rather than fashion-editorial or brand-specific
-- Treat `material` and `occasion` as softer fields when writing the final error analysis
+- Treat `style` and `occasion` as softer fields when writing the final error analysis

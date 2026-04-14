@@ -44,7 +44,7 @@ flowchart LR
 
 - `eval/`
 - Contains dataset placeholders, label manifests, evaluation scripts, and generated summaries
-- Designed so a manually labeled 50-100 image set can be dropped in without changing the app code
+- Now populated with a 100-image evaluation sample drawn from the local fashion dataset
 
 ## Repository Structure
 
@@ -124,15 +124,14 @@ Open:
 
 ## Evaluation Workflow
 
-The evaluation scaffold is implemented, but the final labeled dataset still needs to be completed for submission-quality results.
+The evaluation scaffold is implemented and currently runs against a 100-image sample drawn from the local fashion dataset.
 
 Current workflow:
 
-1. Place evaluation images in `eval/dataset/`
-2. Run `python eval/scripts/bootstrap_labels.py`
-3. Fill `eval/labels/candidate_labels.json` with manual expected labels
-4. Run the evaluation script
-5. Use the generated `eval/summary.md` in the final write-up
+1. Sample images into `eval/dataset/`
+2. Review `eval/labels/candidate_labels.json`
+3. Run the evaluation script
+4. Use the generated `eval/summary.md` in the final write-up
 
 Example:
 
@@ -145,25 +144,39 @@ The scaffold currently reports per-attribute accuracy for:
 
 - `garment_type`
 - `style`
-- `material`
 - `occasion`
 - `season`
+- `base_colour`
+
+These fields were chosen to match the available source metadata in the selected fashion dataset. The original take-home prompt mentions fields such as `material`, but this dataset does not provide reliable material labels, so `base_colour` is used instead as a directly supported visual attribute.
+
+### Current Baseline Results
+
+The current 100-image baseline is intentionally weak because the default classifier is still mock-based. The latest summary reports:
+
+- `garment_type`: `0.00%`
+- `style`: `3.12%`
+- `occasion`: `0.00%`
+- `season`: `0.00%`
+- `base_colour`: `0.00%`
+
+This result is expected. The current provider returns placeholder metadata designed to exercise the pipeline rather than provide meaningful production-quality classification. The main value of the current evaluation is that it establishes a repeatable benchmark before swapping in a real multimodal model.
 
 ## Labeling Rules For Fast Manual Evaluation
 
-To keep the evaluation realistic and timeboxed, I would manually label only the fields that are most useful and reasonably observable:
+To keep the evaluation realistic and timeboxed, the benchmark focuses on the fields that are both useful and directly supported by the selected dataset:
 
 - `garment_type`
 - `style`
-- `material`
 - `occasion`
 - `season`
+- `base_colour`
 
 Practical guidance:
 
 - Leave a field blank rather than guessing if the image is too ambiguous
 - Treat `garment_type` as the most objective baseline field
-- Expect `material` and `occasion` to have more disagreement
+- Expect `style` and `occasion` to have more disagreement
 - Avoid using `consumer_profile`, `trend_notes`, or `location context` as gold-label fields unless there is unusually clear evidence
 
 ## Testing
@@ -192,8 +205,7 @@ Current automated coverage includes:
 - Images are stored locally instead of in cloud object storage
 - Search is lexical and metadata-based, not embedding-based
 - No auth or multi-user workflow is implemented
-- The final 50-100 image labeled evaluation set has not yet been fully assembled
-- The prompt asks for at least one end-to-end test, which is still outstanding
+- The current benchmark uses source dataset labels plus light field mapping, not a custom annotation workflow built from scratch
 
 ## Product and Model Caveats
 
@@ -215,15 +227,23 @@ Less reliable or more subjective fields:
 
 For that reason, the product is designed to treat AI output as a searchable suggestion layer, not as authoritative truth.
 
+## Error Analysis
+
+The current evaluation behaves exactly like a placeholder baseline should:
+
+- `garment_type` is near zero because the mock provider mostly defaults to `dress` unless the filename itself contains strong hints
+- `occasion`, `season`, and `base_colour` are near zero because the mock output is not grounded in image content
+- `style` is slightly above zero only because a few mapped labels happen to overlap with the placeholder default of `contemporary`
+
+If more time were available, the next most valuable improvement would be replacing the mock provider with a real multimodal classifier and rerunning the same 100-image benchmark without changing the rest of the evaluation pipeline.
+
 ## If I Had More Time
 
 - Replace the mock provider with a real multimodal model by default
-- Add image thumbnails to library cards
-- Add a Playwright end-to-end test
 - Expand filters to additional metadata dimensions
 - Add richer search, including embedding-based retrieval
-- Complete the final labeled evaluation set and error analysis
+- Add a dedicated annotation review pass on top of the current 100-image benchmark
 
 ## Submission Status
 
-This repository already demonstrates the requested end-to-end product shape and most of the engineering deliverables. The biggest remaining gap for a polished final submission is completing the real 50-100 image evaluation set and writing the final evaluation discussion around it.
+This repository now includes the core end-to-end workflow, automated tests, a 100-image evaluation benchmark, and submission-ready documentation. The largest remaining improvement would be swapping the mock classifier for a real multimodal provider and rerunning the established benchmark.
