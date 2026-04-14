@@ -24,3 +24,13 @@ cd /Users/yuxiang/fashion-ai-app/frontend
 npm install
 npm run dev
 ```
+
+## End-to-End Test
+
+The Playwright happy-path test expects the backend to be running on `http://127.0.0.1:8000`.
+
+```bash
+cd /Users/yuxiang/fashion-ai-app/frontend
+npx playwright install
+npm run test:e2e
+```

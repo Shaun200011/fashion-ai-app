@@ -296,6 +296,7 @@ export function LibraryShell({ initialImages, hasBackendData, filterGroups }: Pr
           <form className="search-form" onSubmit={handleSearchSubmit}>
             <input
               className="text-input search-input"
+              aria-label="Search library"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               placeholder="Search phrases like embroidered neckline or artisan market"

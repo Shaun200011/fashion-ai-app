@@ -140,10 +140,7 @@ Current automated coverage includes:
 - unit tests for classification parsing defaults and normalization
 - API tests for upload, image listing, filtering, and annotations
 - evaluation-summary tests for accuracy aggregation
-
-What is still missing relative to the original prompt:
-
-- a true browser-level end-to-end test covering upload, classify, and filter in one flow
+- a Playwright happy-path test for upload, classify, and filter
 
 ## What Works Today
 
