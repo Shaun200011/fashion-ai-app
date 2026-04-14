@@ -45,3 +45,8 @@ uvicorn app.main:app --reload
 ```
 
 The frontend will be added next in `frontend/`.
+
+## Current Backend Endpoints
+
+- `GET /api/health`: simple readiness check
+- `POST /api/images/upload`: accepts a multipart image upload and stores the file locally with metadata

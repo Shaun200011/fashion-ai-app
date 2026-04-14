@@ -7,6 +7,7 @@ from sqlmodel import Field, SQLModel
 class Image(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     file_path: str
+    original_filename: str
     designer_name: Optional[str] = None
     captured_at: Optional[datetime] = None
     created_at: datetime = Field(default_factory=datetime.utcnow)
@@ -37,4 +38,3 @@ class Annotation(SQLModel, table=True):
     kind: str
     content: str
     created_at: datetime = Field(default_factory=datetime.utcnow)
-
