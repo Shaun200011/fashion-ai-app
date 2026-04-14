@@ -145,6 +145,7 @@ OPENAI_IMAGE_DETAIL=low
 
 ```bash
 cd frontend
+cp .env.example .env.local
 npm install
 npm run dev
 ```
@@ -180,6 +181,23 @@ That means the current code can be deployed for a demo environment, but a produc
 - replace local image storage with object storage such as S3 or Cloudinary
 
 The frontend is a straightforward fit for platforms like Vercel. The backend is a straightforward fit for container-friendly platforms such as Render, Fly.io, or Railway.
+
+A starter [render.yaml](render.yaml) is included for a two-service Render deployment, and the frontend now includes an environment template for `NEXT_PUBLIC_API_BASE_URL`.
+
+Minimum deployment environment variables:
+
+- Backend:
+  - `AI_PROVIDER`
+  - `OPENAI_API_KEY` if real-model inference is enabled
+  - `OPENAI_MODEL`
+  - `OPENAI_IMAGE_DETAIL`
+- Frontend:
+  - `NEXT_PUBLIC_API_BASE_URL`
+
+For a public demo, I would still recommend switching:
+
+- `SQLite` -> managed Postgres
+- local image files -> object storage
 
 ## Evaluation Workflow
 
