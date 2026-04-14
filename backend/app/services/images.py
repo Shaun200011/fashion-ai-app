@@ -33,7 +33,8 @@ def create_image_record(
     ai_metadata = classify_and_store_metadata(
         session=session,
         image_id=image.id or 0,
-        filename=image.original_filename,
+        file_path=image.file_path,
+        original_filename=image.original_filename,
     )
 
     return ImageUploadResponse(

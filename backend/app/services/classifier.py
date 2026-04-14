@@ -1,29 +1,9 @@
-from pathlib import Path
-
 from app.schemas.classification import ClassificationResult
+from app.services.classification_parser import parse_classification_payload
+from app.services.classification_provider import get_classification_provider
 
 
-def classify_image_placeholder(filename: str) -> ClassificationResult:
-    stem = Path(filename).stem.replace("-", " ").replace("_", " ").strip() or "garment"
-    lower_name = stem.lower()
-
-    garment_type = "dress"
-    if any(token in lower_name for token in ["jacket", "coat", "outerwear"]):
-        garment_type = "outerwear"
-    elif any(token in lower_name for token in ["shirt", "top", "blouse"]):
-        garment_type = "top"
-    elif any(token in lower_name for token in ["pant", "trouser", "jean"]):
-        garment_type = "bottom"
-
-    return ClassificationResult(
-        description=f"Placeholder classification for {stem}. This will be replaced by a multimodal model response.",
-        garment_type=garment_type,
-        style="contemporary",
-        material="unknown",
-        color_palette="neutral",
-        pattern="solid",
-        season="transitional",
-        occasion="daywear",
-        consumer_profile="fashion-conscious shopper",
-        trend_notes="Placeholder metadata pending model integration.",
-    )
+def classify_image(file_path: str, original_filename: str) -> ClassificationResult:
+    provider = get_classification_provider()
+    raw_payload = provider.classify(file_path=file_path, original_filename=original_filename)
+    return parse_classification_payload(raw_payload)

@@ -71,3 +71,9 @@ npm run dev
 - Homepage library reads live image data and supports basic browser-based upload
 - Homepage supports live text search and dynamic filter interaction
 - Homepage supports lightweight designer note annotations
+
+## Current Classification Status
+
+- The backend now routes classification through a provider abstraction instead of embedding placeholder logic directly in route handlers
+- Provider output is normalized through a dedicated parser before persistence
+- The current provider is still mock-based, which keeps the app local-first while preparing for a real multimodal model integration

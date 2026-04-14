@@ -2,11 +2,16 @@ from sqlmodel import Session, select
 
 from app.db.models import AiMetadata
 from app.schemas.classification import ClassificationResult
-from app.services.classifier import classify_image_placeholder
+from app.services.classifier import classify_image
 
 
-def classify_and_store_metadata(session: Session, image_id: int, filename: str) -> ClassificationResult:
-    result = classify_image_placeholder(filename)
+def classify_and_store_metadata(
+    session: Session,
+    image_id: int,
+    file_path: str,
+    original_filename: str,
+) -> ClassificationResult:
+    result = classify_image(file_path=file_path, original_filename=original_filename)
 
     existing = session.exec(select(AiMetadata).where(AiMetadata.image_id == image_id)).first()
     if existing:

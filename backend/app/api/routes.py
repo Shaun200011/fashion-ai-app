@@ -76,7 +76,8 @@ def classify_image(image_id: int, session: Session = Depends(get_session)) -> Cl
     result = classify_and_store_metadata(
         session=session,
         image_id=image.id or 0,
-        filename=image.original_filename,
+        file_path=image.file_path,
+        original_filename=image.original_filename,
     )
     return ClassificationResponse(image_id=image.id or 0, **result.model_dump())
 
