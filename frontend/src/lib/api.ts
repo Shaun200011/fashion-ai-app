@@ -14,3 +14,5 @@ export async function fetchImages(): Promise<ImageListItem[]> {
 
   return response.json();
 }
+
+export { API_BASE_URL };

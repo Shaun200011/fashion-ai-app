@@ -1,3 +1,6 @@
+import { fetchImages } from "@/lib/api";
+import type { ImageListItem } from "@/lib/types";
+
 const sampleLooks = [
   {
     title: "Market embroidery study",
@@ -26,7 +29,39 @@ const filterGroups = [
   { label: "Context", value: "Street market" },
 ];
 
-export default function Home() {
+function getLocationLabel(image: ImageListItem): string {
+  const locationParts = [
+    image.ai_metadata?.city,
+    image.ai_metadata?.country,
+    image.ai_metadata?.continent,
+  ].filter(Boolean);
+
+  return locationParts.length > 0 ? locationParts.join(", ") : "Location pending";
+}
+
+function getPaletteLabel(image: ImageListItem): string {
+  return image.ai_metadata?.color_palette ?? "Palette pending";
+}
+
+function getDesignerNote(image: ImageListItem): string {
+  if (image.designer_name) {
+    return `${image.designer_name} uploaded this look for later review.`;
+  }
+
+  return "Designer note capture will be added in the next iteration.";
+}
+
+export default async function Home() {
+  let images: ImageListItem[] = [];
+
+  try {
+    images = await fetchImages();
+  } catch (_error) {
+    images = [];
+  }
+
+  const hasImages = images.length > 0;
+
   return (
     <main className="page-shell">
       <section className="hero">
@@ -103,7 +138,7 @@ export default function Home() {
         <div className="section-header">
           <div>
             <p className="section-label">Library</p>
-            <h2>Recent inspiration captures</h2>
+            <h2>{hasImages ? "Live inspiration library" : "Recent inspiration captures"}</h2>
           </div>
           <p className="section-note">
             AI metadata remains separate from human notes so designers can trust
@@ -112,33 +147,64 @@ export default function Home() {
         </div>
 
         <div className="look-grid">
-          {sampleLooks.map((look, index) => (
-            <article className="look-card" key={look.title}>
-              <div className={`look-visual look-tone-${index + 1}`}>
-                <span>{look.place}</span>
-              </div>
-              <div className="look-body">
-                <div className="look-heading">
-                  <h3>{look.title}</h3>
-                  <p>{look.garment}</p>
-                </div>
-                <dl className="look-meta">
-                  <div>
-                    <dt>Palette</dt>
-                    <dd>{look.palette}</dd>
+          {hasImages
+            ? images.map((image, index) => (
+                <article className="look-card" key={image.id}>
+                  <div className={`look-visual look-tone-${(index % 3) + 1}`}>
+                    <span>{getLocationLabel(image)}</span>
                   </div>
-                  <div>
-                    <dt>AI Note</dt>
-                    <dd>Contemporary silhouette with tactile detailing.</dd>
+                  <div className="look-body">
+                    <div className="look-heading">
+                      <h3>{image.original_filename}</h3>
+                      <p>{image.ai_metadata?.garment_type ?? "Unknown garment"}</p>
+                    </div>
+                    <dl className="look-meta">
+                      <div>
+                        <dt>Palette</dt>
+                        <dd>{getPaletteLabel(image)}</dd>
+                      </div>
+                      <div>
+                        <dt>AI Note</dt>
+                        <dd>
+                          {image.ai_metadata?.description ??
+                            "AI description will appear after classification."}
+                        </dd>
+                      </div>
+                      <div>
+                        <dt>Designer Note</dt>
+                        <dd>{getDesignerNote(image)}</dd>
+                      </div>
+                    </dl>
                   </div>
-                  <div>
-                    <dt>Designer Note</dt>
-                    <dd>Strong neckline story worth revisiting for resort.</dd>
+                </article>
+              ))
+            : sampleLooks.map((look, index) => (
+                <article className="look-card" key={look.title}>
+                  <div className={`look-visual look-tone-${index + 1}`}>
+                    <span>{look.place}</span>
                   </div>
-                </dl>
-              </div>
-            </article>
-          ))}
+                  <div className="look-body">
+                    <div className="look-heading">
+                      <h3>{look.title}</h3>
+                      <p>{look.garment}</p>
+                    </div>
+                    <dl className="look-meta">
+                      <div>
+                        <dt>Palette</dt>
+                        <dd>{look.palette}</dd>
+                      </div>
+                      <div>
+                        <dt>AI Note</dt>
+                        <dd>Contemporary silhouette with tactile detailing.</dd>
+                      </div>
+                      <div>
+                        <dt>Designer Note</dt>
+                        <dd>Strong neckline story worth revisiting for resort.</dd>
+                      </div>
+                    </dl>
+                  </div>
+                </article>
+              ))}
         </div>
       </section>
     </main>
