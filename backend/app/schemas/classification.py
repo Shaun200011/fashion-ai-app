@@ -18,3 +18,6 @@ class ClassificationResult(BaseModel):
     country: Optional[str] = None
     city: Optional[str] = None
 
+
+class ClassificationResponse(ClassificationResult):
+    image_id: int

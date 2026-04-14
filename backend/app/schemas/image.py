@@ -3,6 +3,8 @@ from typing import Optional
 
 from pydantic import BaseModel
 
+from app.schemas.classification import ClassificationResult
+
 
 class ImageUploadResponse(BaseModel):
     id: int
@@ -11,3 +13,14 @@ class ImageUploadResponse(BaseModel):
     designer_name: Optional[str] = None
     captured_at: Optional[datetime] = None
     created_at: datetime
+    ai_metadata: Optional[ClassificationResult] = None
+
+
+class ImageListItem(BaseModel):
+    id: int
+    file_path: str
+    original_filename: str
+    designer_name: Optional[str] = None
+    captured_at: Optional[datetime] = None
+    created_at: datetime
+    ai_metadata: Optional[ClassificationResult] = None

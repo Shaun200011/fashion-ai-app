@@ -49,4 +49,6 @@ The frontend will be added next in `frontend/`.
 ## Current Backend Endpoints
 
 - `GET /api/health`: simple readiness check
-- `POST /api/images/upload`: accepts a multipart image upload and stores the file locally with metadata
+- `POST /api/images/upload`: accepts a multipart image upload, stores the file locally, and creates placeholder AI metadata
+- `GET /api/images`: returns uploaded images with attached AI metadata
+- `POST /api/images/{image_id}/classify`: reruns placeholder classification for a stored image

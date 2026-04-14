@@ -12,14 +12,17 @@ def _ensure_sqlite_parent_dir() -> None:
             db_path.parent.mkdir(parents=True, exist_ok=True)
 
 
-_ensure_sqlite_parent_dir()
-engine = create_engine(settings.sqlite_url, echo=False)
+def get_engine():
+    _ensure_sqlite_parent_dir()
+    return create_engine(settings.sqlite_url, echo=False)
 
 
 def init_db() -> None:
-    SQLModel.metadata.create_all(engine)
+    SQLModel.metadata.create_all(get_engine())
 
 
 def get_session():
+    engine = get_engine()
+    SQLModel.metadata.create_all(engine)
     with Session(engine) as session:
         yield session
