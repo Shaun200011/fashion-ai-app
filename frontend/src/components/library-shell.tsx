@@ -2,12 +2,13 @@
 
 import { useState, useTransition } from "react";
 
-import { uploadImage } from "@/lib/api";
-import type { ImageListItem } from "@/lib/types";
+import { fetchFilteredImages, uploadImage } from "@/lib/api";
+import type { FilterGroup, ImageListItem } from "@/lib/types";
 
 type Props = {
   initialImages: ImageListItem[];
   hasBackendData: boolean;
+  filterGroups: FilterGroup[];
 };
 
 const sampleLooks = [
@@ -31,11 +32,27 @@ const sampleLooks = [
   },
 ];
 
-const filterGroups = [
-  { label: "Garment", value: "Outerwear" },
-  { label: "Material", value: "Cotton" },
-  { label: "Season", value: "Transitional" },
-  { label: "Context", value: "Street market" },
+const fallbackFilterGroups: FilterGroup[] = [
+  {
+    key: "garment_type",
+    label: "Garment",
+    options: [{ label: "Outerwear", value: "outerwear", count: 3 }],
+  },
+  {
+    key: "material",
+    label: "Material",
+    options: [{ label: "Cotton", value: "cotton", count: 2 }],
+  },
+  {
+    key: "season",
+    label: "Season",
+    options: [{ label: "Transitional", value: "transitional", count: 3 }],
+  },
+  {
+    key: "occasion",
+    label: "Occasion",
+    options: [{ label: "Daywear", value: "daywear", count: 3 }],
+  },
 ];
 
 function getLocationLabel(image: ImageListItem): string {
@@ -60,16 +77,51 @@ function getDesignerNote(image: ImageListItem): string {
   return "Designer note capture will be added in the next iteration.";
 }
 
-export function LibraryShell({ initialImages, hasBackendData }: Props) {
+export function LibraryShell({ initialImages, hasBackendData, filterGroups }: Props) {
   const [images, setImages] = useState(initialImages);
   const [designerName, setDesignerName] = useState("Womenswear Team");
   const [capturedAt, setCapturedAt] = useState("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [feedback, setFeedback] = useState<string | null>(null);
+  const [query, setQuery] = useState("");
+  const [activeFilters, setActiveFilters] = useState<Record<string, string>>({});
   const [isPending, startTransition] = useTransition();
 
   const hasImages = images.length > 0;
   const isUsingFallback = !hasImages && !hasBackendData;
+  const visibleFilterGroups = filterGroups.length > 0 ? filterGroups : fallbackFilterGroups;
+
+  function refreshImages(nextQuery: string, nextFilters: Record<string, string>) {
+    startTransition(async () => {
+      try {
+        const nextImages = await fetchFilteredImages({
+          query: nextQuery || undefined,
+          garment_type: nextFilters.garment_type,
+          material: nextFilters.material,
+          season: nextFilters.season,
+          occasion: nextFilters.occasion,
+        });
+        setImages(nextImages);
+      } catch (_error) {
+        setFeedback("Could not refresh the library from the backend.");
+      }
+    });
+  }
+
+  function handleSearchSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    refreshImages(query, activeFilters);
+  }
+
+  function handleFilterToggle(groupKey: string, value: string) {
+    const nextFilters = {
+      ...activeFilters,
+      [groupKey]: activeFilters[groupKey] === value ? "" : value,
+    };
+
+    setActiveFilters(nextFilters);
+    refreshImages(query, nextFilters);
+  }
 
   function handleUploadSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -83,16 +135,23 @@ export function LibraryShell({ initialImages, hasBackendData }: Props) {
 
     startTransition(async () => {
       try {
-        const uploaded = await uploadImage({
+        await uploadImage({
           file: selectedFile,
           designerName: designerName.trim() || undefined,
           capturedAt: capturedAt || undefined,
         });
 
-        setImages((current) => [uploaded, ...current]);
         setSelectedFile(null);
         setCapturedAt("");
         setFeedback("Upload complete. Placeholder AI metadata has been added.");
+        const nextImages = await fetchFilteredImages({
+          query: query || undefined,
+          garment_type: activeFilters.garment_type,
+          material: activeFilters.material,
+          season: activeFilters.season,
+          occasion: activeFilters.occasion,
+        });
+        setImages(nextImages);
       } catch (_error) {
         setFeedback("Upload failed. Make sure the backend is running on port 8000.");
       }
@@ -196,20 +255,45 @@ export function LibraryShell({ initialImages, hasBackendData }: Props) {
             <p className="section-label">Discovery</p>
             <h2>Dynamic filters</h2>
           </div>
-          <div className="filter-list">
-            {filterGroups.map((filter) => (
-              <div className="filter-pill" key={filter.label}>
-                <span>{filter.label}</span>
-                <strong>{filter.value}</strong>
+          <form className="search-form" onSubmit={handleSearchSubmit}>
+            <input
+              className="text-input search-input"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Search phrases like embroidered neckline or artisan market"
+            />
+            <button className="secondary-button" type="submit" disabled={isPending}>
+              Search
+            </button>
+          </form>
+          <div className="filter-groups">
+            {visibleFilterGroups.map((group) => (
+              <div className="filter-group" key={group.key}>
+                <p className="filter-group-label">{group.label}</p>
+                <div className="filter-list">
+                  {group.options.length > 0 ? (
+                    group.options.map((option) => {
+                      const isActive = activeFilters[group.key] === option.value;
+                      return (
+                        <button
+                          className={`filter-pill ${isActive ? "filter-pill-active" : ""}`}
+                          key={`${group.key}-${option.value}`}
+                          type="button"
+                          onClick={() => handleFilterToggle(group.key, option.value)}
+                        >
+                          <span>{option.label}</span>
+                          <strong>{option.count}</strong>
+                        </button>
+                      );
+                    })
+                  ) : (
+                    <div className="search-box">
+                      <span>No values yet</span>
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
-          </div>
-          <div className="search-box">
-            <span>
-              {hasImages
-                ? "Live data loaded from the backend image library."
-                : "Try “embroidered neckline”"}
-            </span>
           </div>
         </div>
       </section>

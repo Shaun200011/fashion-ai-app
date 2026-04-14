@@ -7,8 +7,10 @@ from sqlmodel import Session
 from app.db.models import Image
 from app.db.session import get_session
 from app.schemas.classification import ClassificationResponse
+from app.schemas.filter import FilterGroup
 from app.schemas.health import HealthResponse
 from app.schemas.image import ImageListItem, ImageUploadResponse
+from app.services.filters import list_filter_groups
 from app.services.images import create_image_record, list_images
 from app.services.metadata import classify_and_store_metadata
 
@@ -36,8 +38,27 @@ def upload_image(
 
 
 @router.get("/images", response_model=list[ImageListItem], tags=["images"])
-def get_images(session: Session = Depends(get_session)) -> list[ImageListItem]:
-    return list_images(session)
+def get_images(
+    query: Optional[str] = None,
+    garment_type: Optional[str] = None,
+    material: Optional[str] = None,
+    season: Optional[str] = None,
+    occasion: Optional[str] = None,
+    session: Session = Depends(get_session),
+) -> list[ImageListItem]:
+    return list_images(
+        session,
+        query=query,
+        garment_type=garment_type,
+        material=material,
+        season=season,
+        occasion=occasion,
+    )
+
+
+@router.get("/filters", response_model=list[FilterGroup], tags=["images"])
+def get_filters(session: Session = Depends(get_session)) -> list[FilterGroup]:
+    return list_filter_groups(session)
 
 
 @router.post(

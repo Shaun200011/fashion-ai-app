@@ -23,3 +23,15 @@ export type ImageListItem = {
   created_at: string;
   ai_metadata?: ClassificationResult | null;
 };
+
+export type FilterOption = {
+  label: string;
+  value: string;
+  count: number;
+};
+
+export type FilterGroup = {
+  key: string;
+  label: string;
+  options: FilterOption[];
+};

@@ -1,4 +1,4 @@
-import type { ImageListItem } from "@/lib/types";
+import type { FilterGroup, ImageListItem } from "@/lib/types";
 
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://127.0.0.1:8000/api";
@@ -10,6 +10,45 @@ export async function fetchImages(): Promise<ImageListItem[]> {
 
   if (!response.ok) {
     throw new Error("Failed to fetch image library.");
+  }
+
+  return response.json();
+}
+
+export async function fetchFilteredImages(params: {
+  query?: string;
+  garment_type?: string;
+  material?: string;
+  season?: string;
+  occasion?: string;
+}): Promise<ImageListItem[]> {
+  const searchParams = new URLSearchParams();
+
+  Object.entries(params).forEach(([key, value]) => {
+    if (value) {
+      searchParams.set(key, value);
+    }
+  });
+
+  const suffix = searchParams.toString() ? `?${searchParams.toString()}` : "";
+  const response = await fetch(`${API_BASE_URL}/images${suffix}`, {
+    cache: "no-store",
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch filtered images.");
+  }
+
+  return response.json();
+}
+
+export async function fetchFilters(): Promise<FilterGroup[]> {
+  const response = await fetch(`${API_BASE_URL}/filters`, {
+    cache: "no-store",
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch filter groups.");
   }
 
   return response.json();
